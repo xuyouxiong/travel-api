@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    include: core
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
