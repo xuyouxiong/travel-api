@@ -3,6 +3,8 @@ package cn.linstudy.travel.controller;
 
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.service.UserInfoService;
+import cn.linstudy.travel.vo.UserInfoLoginVO;
+import cn.linstudy.travel.vo.UserInfoRegisterVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -49,5 +51,16 @@ public class UserInfoController {
    return userInfoService.sendVerifyCode(phone);
   }
 
+  @ApiOperation(value = "用户注册")
+  @GetMapping("regist")
+  public JsonResult sendVerifyCode( UserInfoRegisterVO userInfoRegisterVO){
+    return userInfoService.register(userInfoRegisterVO);
+  }
+
+  @ApiOperation(value = "用户登录")
+  @GetMapping("login")
+  public JsonResult login(UserInfoLoginVO userInfoRegisterVO){
+    return userInfoService.login(userInfoRegisterVO);
+  }
 
 }

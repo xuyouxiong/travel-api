@@ -50,4 +50,8 @@ public class UserInfo extends BaseDomain{
     @ApiModelProperty(value = "状态")
     private Integer state = SystemConstant.STATE_NORMAL;
 
+    public UserInfo(String phone, String password) {
+        this.phone = phone;
+        this.password = password;
+    }
 }

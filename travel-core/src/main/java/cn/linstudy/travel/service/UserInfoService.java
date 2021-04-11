@@ -3,6 +3,8 @@ package cn.linstudy.travel.service;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.mapper.UserInfoMapper;
 import cn.linstudy.travel.qo.response.JsonResult;
+import cn.linstudy.travel.vo.UserInfoLoginVO;
+import cn.linstudy.travel.vo.UserInfoRegisterVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -22,5 +24,30 @@ public interface UserInfoService extends IService<UserInfo> {
       */
   JsonResult checkPhone(String phone);
 
+  /**
+      * @Description:发送验证码
+      * @author XiaoLin
+      * @date 2021/4/10
+      * @Param: [phone]
+      * @return cn.linstudy.travel.qo.response.JsonResult
+      */
   JsonResult sendVerifyCode(String phone);
+
+  /**
+      * @Description:用户注册
+      * @author XiaoLin
+      * @date 2021/4/10
+      * @Param: [userInfoRegisterVO]
+      * @return cn.linstudy.travel.qo.response.JsonResult
+      */
+  JsonResult register(UserInfoRegisterVO userInfoRegisterVO);
+
+  /**
+      * @Description: 登录
+      * @author XiaoLin
+      * @date 2021/4/10
+      * @Param: [userInfoRegisterVO]
+      * @return cn.linstudy.travel.qo.response.JsonResult
+      */
+  JsonResult login(UserInfoLoginVO userInfoRegisterVO);
 }

@@ -38,5 +38,8 @@ public class SystemConstant {
   public static final String MSG_SEND_PHONE_MESSAGE = "发送短信失败";
   public static final int CODE_ERROR = 500;
   public static final String MSG_ERROR = "系统异常，请联系管理员";
+
   public static final int CODE_ERROR_PARAM = 501;  //参数异常
+  public static final int CODE_ERROR_PARAM_IS_NULL = 502;
+  public static final String MSG_ERROR_PARAM_IS_NULL = "参数为空";
 }

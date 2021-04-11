@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "aliyun",
+      "type": "cn.linstudy.travel.utils.SendMessageUtils",
+      "sourceType": "cn.linstudy.travel.utils.SendMessageUtils"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
