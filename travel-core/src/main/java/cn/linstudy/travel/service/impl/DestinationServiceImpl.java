@@ -108,7 +108,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
   public List<Destination> searchDestination(Long regionId) {
     List<Destination> list = new ArrayList<>();
     QueryWrapper<Destination> wrapper = new QueryWrapper<>();
-    //第一层：挂载目的地集合
+    //第一层：挂载目的地集合，需要区分国内和非国内
     //国内
     if(regionId == -1){
       //查询中国所有省份

@@ -61,5 +61,12 @@ public interface DestinationService extends IService<Destination> {
   List<Destination> getToasts(Long parentId);
 
 
+  /**
+      * @Description: 根据区域查询该区域底下的目的地
+      * @author XiaoLin
+      * @date 2021/4/14
+      * @Param: [regionId]
+      * @return java.util.List<cn.linstudy.travel.domain.Destination>
+      */
   List<Destination> searchDestination(Long regionId);
 }
