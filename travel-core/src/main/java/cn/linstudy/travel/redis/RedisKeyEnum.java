@@ -12,7 +12,10 @@ import lombok.Getter;
 public enum RedisKeyEnum {
 
   // 用户注册验证码 key 实例对象
-  ENUM_VERYFY_CODE("veryfy_code",SystemConstant.VERIFY_CODE_VAI_TIME*60L);
+  ENUM_VERYFY_CODE("veryfy_code",SystemConstant.VERIFY_CODE_VAI_TIME*60L),
+
+  // 用户登录Toekn
+  ENUM_LOGIN_TOKEN("login_token",SystemConstant.USER_INFO_TOKEN_VAI_TIME*60L);
 
 
   // 前缀

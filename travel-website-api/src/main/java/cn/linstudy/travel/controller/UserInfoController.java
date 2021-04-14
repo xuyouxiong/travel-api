@@ -1,6 +1,7 @@
 package cn.linstudy.travel.controller;
 
 
+import cn.linstudy.travel.annotation.PassLogin;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.service.UserInfoService;
 import cn.linstudy.travel.vo.UserInfoLoginVO;
@@ -28,6 +29,7 @@ public class UserInfoController {
   @Autowired
   UserInfoService userInfoService;
 
+  
   @ApiOperation(value = "根据id查询用户")
   @GetMapping("/detail")
   @ApiImplicitParam(name = "id", value = "用户id")
@@ -52,7 +54,7 @@ public class UserInfoController {
   }
 
   @ApiOperation(value = "用户注册")
-  @GetMapping("regist")
+  @GetMapping("register")
   public JsonResult sendVerifyCode( UserInfoRegisterVO userInfoRegisterVO){
     return userInfoService.register(userInfoRegisterVO);
   }

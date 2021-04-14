@@ -5,6 +5,7 @@ import cn.linstudy.travel.utils.VerifyCodeUtils;
  * @Author XiaoLin
  * @Date 2021/4/9 20:35
  */
+
 public class TestRandomCode {
 
   public static void main(String[] args) {

@@ -60,7 +60,7 @@ $(function () {
     });
     //注册
     $("#editForm").ajaxForm({
-        url:domainUrl + "/users/regist",
+        url:domainUrl + "/users/register",
         type:"POST",
         success:function (data) {
             if(data.code == 200){

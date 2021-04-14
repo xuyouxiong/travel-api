@@ -42,8 +42,9 @@ var vue = new Vue({
     mounted:function () {
         //热门数据
         var _this = this;
-        ajaxGet("/destinations/hotRegion", {}, function (data) {
-            _this.regions = data.data;
+        ajaxGet("/destinations/hotRegion", {}, function (result) {
+            console.log(result.data)
+            _this.regions = result.data;
         })
 
         //通过区域id查询目的地

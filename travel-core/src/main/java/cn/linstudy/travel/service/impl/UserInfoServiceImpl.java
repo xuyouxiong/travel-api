@@ -6,6 +6,7 @@ import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.exception.LogicException;
 import cn.linstudy.travel.mapper.UserInfoMapper;
 import cn.linstudy.travel.qo.response.JsonResult;
+import cn.linstudy.travel.redis.RedisKeyEnum;
 import cn.linstudy.travel.redis.service.UserInfoRedisService;
 import cn.linstudy.travel.service.UserInfoService;
 import cn.linstudy.travel.utils.AssertsUtils;
@@ -110,22 +111,44 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
       * @return cn.linstudy.travel.qo.response.JsonResult
       */
   @Override
-  public JsonResult login(UserInfoLoginVO userInfoRegisterVO) {
+  public JsonResult login(UserInfoLoginVO userInfoLoginVO) {
     QueryWrapper wrapper = new QueryWrapper();
-    wrapper.eq("phone",userInfoRegisterVO.getPhone());
+    wrapper.eq("phone",userInfoLoginVO.getPhone());
     UserInfo userInfo = userInfoMapper.selectOne(wrapper);
     if (userInfo != null){
-     if (userInfo.getPassword().equals(userInfoRegisterVO.getPassword())){
+     if (userInfo.getPassword().equals(userInfoLoginVO.getPassword())){
        Map<String, String> map = new HashMap<>();//用来存放payload
        map.put("phone",userInfo.getPhone());
-       String token = JwtUtil.getToken(map);
+       String token = JwtUtil.getToken(Long.toString(userInfo.getId()),map);
+       String key = RedisKeyEnum.ENUM_LOGIN_TOKEN.join(userInfoLoginVO.getPhone());
+       String LoginToken = userInfoRedisService.getValue(key);
+       if (LoginToken != null){
+         userInfoRedisService.resetTime(key);
+       }
        // 将token放入redis中
-       return  JsonResult.success(token);
+//       String key = RedisKeyEnum.ENUM_LOGIN_TOKEN.join(userInfoLoginVO.getPhone());
+       userInfoRedisService.setLoginToekn(key,token);
+       Map<String,Object> resultMap = new HashMap<>();
+       resultMap.put("token",token);
+       resultMap.put("user",userInfo);
+       return  JsonResult.success(resultMap);
      }else {
        throw new LogicException("密码错误");
      }
     }
     throw new LogicException("手机号未注册");
+  }
+
+  /**
+      * @Description: 校验根据id查询的用户是否存在
+      * @author XiaoLin
+      * @date 2021/4/11
+      * @Param: [parseLong]
+      * @return cn.linstudy.travel.domain.UserInfo
+      */
+  @Override
+  public UserInfo checkUserById(long id) {
+    return userInfoMapper.selectById(id);
   }
 
 }

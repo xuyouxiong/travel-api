@@ -27,4 +27,40 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
     template.opsForValue().set(key,value, RedisKeyEnum.ENUM_VERYFY_CODE.getTime(), TimeUnit.SECONDS);
   }
 
+  /**
+      * @Description: 将登录Token放进Redis
+      * @author XiaoLin
+      * @date 2021/4/11
+      * @Param: [key, token]
+      * @return void
+      */
+  @Override
+  public void setLoginToekn(String key, String token) {
+    template.opsForValue().set(key,token,RedisKeyEnum.ENUM_LOGIN_TOKEN.getTime(),TimeUnit.SECONDS);
+  }
+
+  /**
+      * @Description: 通过key获取value
+      * @author XiaoLin
+      * @date 2021/4/11
+      * @Param: [key]
+      * @return java.lang.String
+      */
+  @Override
+  public String getValue(String key) {
+    return template.opsForValue().get(key);
+  }
+
+  /**
+      * @Description: 根据key重新设置时间
+      * @author XiaoLin
+      * @date 2021/4/11
+      * @Param: [key]
+      * @return void
+      */
+  @Override
+  public void resetTime(String key) {
+    template.expire(key,SystemConstant.USER_INFO_TOKEN_VAI_TIME*60L,TimeUnit.SECONDS);
+  }
+
 }

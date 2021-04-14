@@ -4,6 +4,7 @@ import cn.linstudy.travel.constant.SystemConstant;
 import cn.linstudy.travel.exception.LogicException;
 import cn.linstudy.travel.qo.response.JsonResult;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Author XiaoLin
  * @Date 2021/4/10 19:17
  */
+@ControllerAdvice
 public class CommonExceptionHandler {
 
   //这个方法定义的跟映射方法操作一样

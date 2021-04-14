@@ -17,8 +17,6 @@ import lombok.Setter;
 @ApiModel(value = "cn.linstudy.travel.domain",description = "用户信息实体类")
 public class UserInfo extends BaseDomain{
 
-
-
     @ApiModelProperty(value = "昵称")
     private String nickname;
 

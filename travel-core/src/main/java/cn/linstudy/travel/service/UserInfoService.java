@@ -50,4 +50,14 @@ public interface UserInfoService extends IService<UserInfo> {
       * @return cn.linstudy.travel.qo.response.JsonResult
       */
   JsonResult login(UserInfoLoginVO userInfoRegisterVO);
+
+  /**
+      * @Description: 校验根据id查询的用户是否存在
+      * @author XiaoLin
+      * @date 2021/4/11
+      * @Param: [parseLong]
+      * @return cn.linstudy.travel.domain.UserInfo
+      */
+  UserInfo checkUserById(long parseLong);
+  
 }
