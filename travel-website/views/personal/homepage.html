@@ -172,8 +172,8 @@
                             <ul class="clearfix">
                                 <li v-for="u in visitors">
                                     <a :href="'/views/personal/homepage.html?ownerId='+u.id" target="_blank">
-                                        <img :src="u.headImgUrl" height="48" width="48"></a>
-                                    <p><a :href="'/views/personal/homepage.html?ownerId='+u.id" target="_blank" >{{u.nickname}}</a></p>
+                                        <img :src="u.visitor.headImgUrl" height="48" width="48"></a>
+                                    <p><a :href="'/views/personal/homepage.html?ownerId='+u.id" target="_blank" >{{u.visitor.nickname}}</a></p>
                                 </li>
                             </ul>
                         </div>

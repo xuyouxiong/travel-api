@@ -13,12 +13,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Description 
+ * @Description 目的地实体类
  * @Author  XiaoLin
  * @Date  2021/4/11 21:58
  */
 
-@ApiModel(value="com-domain-Destination")
+@ApiModel(value="目的地实体类")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

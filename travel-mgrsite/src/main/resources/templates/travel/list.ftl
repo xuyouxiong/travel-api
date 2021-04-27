@@ -11,7 +11,8 @@
                var id = $(this).data('id');
                //根据id查询游记内容
                $.get('/travel/getContentById',{id:id},function (data) {
-                   $("#inputModal .modal-body").html(data.data);
+                   console.log(data.data)
+                   $("#inputModal .modal-body").html(data.data.content);
                    $("#inputModal").modal('show');
                })
            })
@@ -49,12 +50,13 @@
             </div>
 
             <!--高级查询--->
-            <form class="form-inline" id="searchForm" action="/travel/list" method="post">
+            <form class="form-inline" id="searchForm" action="/travel/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
                 <div class="form-group">
                    <select id="stateSelect" name="state" class="form-control">
+                       <option value="-1" selected>全部</option>
                        <option value="1">待审核</option>
-                       <option value="-1">已拒绝</option>
+                       <option value="3">已拒绝</option>
                    </select>
                    <script>
                        $("#stateSelect").val(${(qo.state)!})
@@ -85,7 +87,9 @@
 						<td>${(entity.destName)!}</td>
 						<td>${(entity.author.nickname)!}</td>
 						<td>${entity.stateDisplay}</td>
+
                         <td>
+                            <#if entity.state == 1>
                             <a class="btn btn-default btn-xs auditBtn" href="JavaScript:;"
                                data-id="${entity.id}" data-state="2">
                             <span class="glyphicon glyphicon-tag"></span> 审核通过
@@ -96,13 +100,12 @@
                                <span class="glyphicon glyphicon-minus-sign"></span> 审核拒绝
                            </a>
                             |
+                            </#if>
                             <a class="btn btn-danger btn-xs updateStateBtn" href="javascript:;"
                                data-id="${entity.id}" data-state="1" >
                                 <span class="glyphicon glyphicon-minus-sign"></span> 下架
                             </a>
-
-
-
+                            |
                             <a class="btn btn-info btn-xs lookBtn" href="JavaScript:;" data-id="${entity.id}">
                                 <span class="glyphicon glyphicon-th"></span> 查看</a>
                         </td>

@@ -35,7 +35,7 @@ function ajaxRequest(url,type, param, success, fail){
         },
         success:function (data) {
             if(!data){
-                popup("请求异常");
+                // popup("请求异常");
             }else{
                 if(data.code == 200){
                     if(success){

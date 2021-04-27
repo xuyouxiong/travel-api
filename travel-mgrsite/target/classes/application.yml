@@ -12,5 +12,5 @@ spring:
     suffix: .ftl
 
 aliyun:
-  accessKeyId: xxxx
-  secret: xxxx
+  accessKeyId: LTAI5tPKC7kMCZfBJK8t8gxx
+  secret: nnPvo3EuztfaPz66JSs8pJ2ABmkVSx

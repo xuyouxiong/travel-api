@@ -6,6 +6,18 @@ spring:
     password: 1101121833
   redis:
     host: 127.0.0.1
+  data:
+    mongodb:
+      uri: mongodb://localhost/springboot-travel
 aliyun:
-  accessKeyId: xxxx
-  secret: xxxx
+  accessKeyId: LTAI5tPKC7kMCZfBJK8t8gxx
+  secret: nnPvo3EuztfaPz66JSs8pJ2ABmkVSx
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core: debug
+

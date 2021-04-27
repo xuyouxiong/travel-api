@@ -42,4 +42,6 @@ public class SystemConstant {
   public static final int CODE_ERROR_PARAM = 501;  //参数异常
   public static final int CODE_ERROR_PARAM_IS_NULL = 502;
   public static final String MSG_ERROR_PARAM_IS_NULL = "参数为空";
+
+
 }

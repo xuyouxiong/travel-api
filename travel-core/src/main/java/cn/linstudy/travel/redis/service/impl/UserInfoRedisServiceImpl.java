@@ -1,9 +1,12 @@
 package cn.linstudy.travel.redis.service.impl;
 
 import cn.linstudy.travel.constant.SystemConstant;
+import cn.linstudy.travel.domain.UserInfo;
+import cn.linstudy.travel.exception.LogicException;
 import cn.linstudy.travel.redis.RedisKeyEnum;
 import cn.linstudy.travel.redis.service.UserInfoRedisService;
 import cn.linstudy.travel.service.UserInfoService;
+import cn.linstudy.travel.utils.JwtUtil;
 import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -19,6 +22,9 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
 
   @Autowired
   private StringRedisTemplate template;
+
+  @Autowired
+  UserInfoService userInfoService;
   @Override
   public void setVerifyCode(String phone, String code) {
     String  key = RedisKeyEnum.ENUM_VERYFY_CODE.join(phone);
@@ -60,7 +66,17 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
       */
   @Override
   public void resetTime(String key) {
-    template.expire(key,SystemConstant.USER_INFO_TOKEN_VAI_TIME*60L,TimeUnit.SECONDS);
+    template.expire(key, SystemConstant.USER_INFO_TOKEN_VAI_TIME*60L,TimeUnit.SECONDS);
   }
+
+  @Override
+  public UserInfo getUserInfoByToken(String token) {
+    UserInfo userInfo = userInfoService.getById(Long.parseLong(JwtUtil.getAudience(token)));
+    if (userInfo== null){
+      throw new LogicException("token异常，无法解析获取用户");
+    }
+    return userInfo;
+  }
+
 
 }

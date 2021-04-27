@@ -6,7 +6,10 @@ var vue = new Vue({
     methods:{
     },
     mounted:function () {
-        //景点列表
+        ajaxGet("/attractions/list",{},function (result){
+            vue.spots = result.data.records;
+            console.log(vue.spots);
+        })
     }
 });
 

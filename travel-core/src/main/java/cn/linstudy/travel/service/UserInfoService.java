@@ -6,6 +6,7 @@ import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.vo.UserInfoLoginVO;
 import cn.linstudy.travel.vo.UserInfoRegisterVO;
 import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 
 /**
  * @Description 用户业务层接口
@@ -59,5 +60,8 @@ public interface UserInfoService extends IService<UserInfo> {
       * @return cn.linstudy.travel.domain.UserInfo
       */
   UserInfo checkUserById(long parseLong);
-  
+
+  boolean favor(Long sid, Long userId);
+
+  List<UserInfo> queryByDestName(String name);
 }

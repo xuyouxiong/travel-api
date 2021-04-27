@@ -21,6 +21,7 @@ var vue = new Vue({
             var map = data.data;
             vue.result = map.result;
             vue.dest = map.dest;
+            console.log(map.dest)
             vue.qo = map.qo;
             $("#_j_search_input").val(vue.qo.keyword);
             $("#searchType").val(0);  //目的地

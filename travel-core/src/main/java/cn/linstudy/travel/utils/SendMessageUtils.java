@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SendMessageUtils {
 
-
   private static String accessKeyId;  // TODO 修改成自己的
   private static String accessKeySecret;   // TODO 修改成自己的
 

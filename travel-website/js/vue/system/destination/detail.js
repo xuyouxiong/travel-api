@@ -43,7 +43,7 @@ var vue = new Vue({
 
 
         //点击量前上攻略
-        ajaxGet("/destinations/strategies/viewnumTop3", {destId: param.id}, function (data) {
+        ajaxGet("/strategies/viewnumTop3", {destId: param.id}, function (data) {
 
             _this.strategies = data.data;
         })

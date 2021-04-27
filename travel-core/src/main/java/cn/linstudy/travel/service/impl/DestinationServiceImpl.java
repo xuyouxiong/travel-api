@@ -10,6 +10,7 @@ import cn.linstudy.travel.service.RegionService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.awt.Desktop;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -115,7 +116,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
       wrapper.eq("parent_name", "中国");
       list = super.list(wrapper);
     }else {
-      //非国内
+      //非国内,先查出地区关联的目的地
       Region region = regionService.getById(regionId);
       list = super.listByIds(region.parseRefIds());
     }
@@ -129,6 +130,11 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
       dest.setChildren(children);
     }
     return list;
+  }
+
+  @Override
+  public Destination queryByName(String name) {
+    return super.getOne(new QueryWrapper<Destination>().eq("name",name));
   }
 
 

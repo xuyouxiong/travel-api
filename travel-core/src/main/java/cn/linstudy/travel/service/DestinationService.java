@@ -5,6 +5,7 @@ import cn.linstudy.travel.qo.DestinationQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import java.awt.Desktop;
 import java.util.List;
 import java.util.Map;
 
@@ -69,4 +70,13 @@ public interface DestinationService extends IService<Destination> {
       * @return java.util.List<cn.linstudy.travel.domain.Destination>
       */
   List<Destination> searchDestination(Long regionId);
+
+  /**
+      * @Description: 通过名字查询目的地
+      * @author XiaoLin
+      * @date 2021/4/22
+      * @Param: [keyword]
+      * @return java.awt.Desktop
+      */
+  Destination queryByName(String name);
 }

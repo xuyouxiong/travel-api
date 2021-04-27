@@ -99,7 +99,7 @@
                         <label for="name" class="col-sm-2 control-label">封面：</label>
                         <div class="col-sm-8">
                             <input type="hidden"  class="form-control" id="coverUrl"  name="coverUrl" value="${(strategy.coverUrl)!}" >
-                            <img src="${(strategy.coverUrl)!'/images/default.jpg'}" width="100px" id="imgUrl">
+                            <img src="${(strategy.coverUrl)!'/images/default.jpg'}" width="100px" id="imgUrl" >
                             <button type="button" class="imgBtn">浏览</button>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
 
                                 <#list catalogs as c >
                                     <optgroup label="${c.destName!}">
-                                        <#list c.catalogList as ml>
+                                        <#list c.catalog as ml>
                                             <option value="${ml.id}">${ml.name}</option>
                                         </#list>
                                     </optgroup>

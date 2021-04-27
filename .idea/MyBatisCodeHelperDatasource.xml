@@ -12,6 +12,7 @@
         <option name="lombokAllArgConstructor" value="true" />
         <option name="lombokDataAnnotation" value="true" />
         <option name="lombokNoArgsConstructor" value="true" />
+        <option name="modelAddToString" value="true" />
         <option name="moduleNameToPackageAndPathMap">
           <map>
             <entry key="travel-mgrsite">
@@ -30,6 +31,18 @@
         </option>
         <option name="tableGenerateConfigs">
           <map>
+            <entry key="springboot-travel:attraction">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="" />
+                  <option name="javaModelName" value="Attraction" />
+                  <option name="moduleName" value="travel-mgrsite" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="springboot-travel:destination">
               <value>
                 <TableGenerateConfig>

@@ -1,5 +1,7 @@
 package cn.linstudy.travel.redis.service;
 
+import cn.linstudy.travel.domain.UserInfo;
+
 /**
  * @Description 用户缓存的业务类
  * @Author XiaoLin
@@ -32,5 +34,21 @@ public interface UserInfoRedisService {
       */
   String getValue(String key);
 
+  /**
+      * @Description: 重新设置redis的过期时间
+      * @author XiaoLin
+      * @date 2021/4/19
+      * @Param: [key]
+      * @return void
+      */
   void resetTime(String key);
+  
+  /**
+      * @Description: 通过token获取用户
+      * @author XiaoLin
+      * @date 2021/4/19
+      * @Param: [token]
+      * @return cn.linstudy.travel.domain.UserInfo
+      */
+  UserInfo getUserInfoByToken(String token);
 }

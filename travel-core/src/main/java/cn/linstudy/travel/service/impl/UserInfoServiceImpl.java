@@ -15,6 +15,7 @@ import cn.linstudy.travel.utils.SendMessageUtils;
 import cn.linstudy.travel.utils.VerifyCodeUtils;
 import cn.linstudy.travel.vo.UserInfoLoginVO;
 import cn.linstudy.travel.vo.UserInfoRegisterVO;
+import com.alibaba.fastjson.JSONArray;
 import com.aliyuncs.exceptions.ClientException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -22,9 +23,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.security.auth.login.LoginException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,6 +46,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
 
   @Autowired
   UserInfoRedisService userInfoRedisService;
+
+  @Autowired
+  StringRedisTemplate redisTemplate;
   /**
       * @Description: 检查手机是否注册过实现类
       * @author XiaoLin
@@ -151,4 +157,32 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
     return userInfoMapper.selectById(id);
   }
 
+  /**
+      * @Description: 判断是白色星星还是黑色星星
+      * @author XiaoLin
+      * @date 2021/4/20
+      * @Param: [sid, userId]
+      * @return boolean
+      */
+  @Override
+  public boolean favor(Long sid, Long userId) {
+    String key = RedisKeyEnum.STRATEGY_FAVOR.join(userId.toString());
+    boolean flag = false;
+    List<Long> favorNumList = null;
+    if (redisTemplate.hasKey(key)){
+     String favorList =  redisTemplate.opsForValue().get(key);
+      favorNumList = JSONArray.parseArray(favorList,Long.class);
+      if (favorNumList.contains(sid)) {
+          // 说明有收藏，变为黑色星星
+          flag = true;
+        }
+      }
+    return flag;
+    }
+
+  @Override
+  public List<UserInfo> queryByDestName(String name) {
+    return super.list(new QueryWrapper<UserInfo>().eq("city",name));
+  }
 }
+

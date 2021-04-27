@@ -58,7 +58,7 @@ public class JwtInterceptor implements HandlerInterceptor {
           throw new LogicException("用户不存在");
         }
         // 验证Token是否合法
-        JwtUtil.verify(token, userId);
+//        JwtUtil.verify(token, userId);
         return true;
       }
     }

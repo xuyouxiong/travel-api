@@ -58,18 +58,15 @@ var vue = new Vue({
             _this.abroadCds = data.data;
         })
 
-
         //国内攻略推荐
         ajaxGet("/strategies/rank", {type:2}, function (data) {
             _this.chinaCds = data.data;
         })
 
-
         //热门攻略推荐
         ajaxGet("/strategies/rank", {type:3}, function (data) {
             _this.hotCds = data.data;
         })
-
 
         ajaxGet("/strategies/themeCds",{}, function (data) {
             vue.themeCds = data.data;

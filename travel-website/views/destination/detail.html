@@ -98,7 +98,7 @@
                                 <dl class="clearfix" v-for="c in catalogs">
                                     <dt><a :href="'/views/destination/survey.html?destId='+dest.id+'&catalogId='+c.id" target="_blank">{{c.name}}</a></dt>
                                     <dd>
-                                        <a :href="'/views/strategy/detail.html?id='+s.id" target="_blank" v-for="s in c.strategies">{{s.subTitle}} <span>|</span> </a>
+                                        <a :href="'/views/strategy/detail.html?id='+s.id" target="_blank" v-for="s in c.catalog">{{s.subTitle}} <span>|</span> </a>
                                     </dd>
                                 </dl>
                             </div>
@@ -418,6 +418,6 @@
     </script>
 </div>
 </body>
-<script src="/js/vue/vue.min.js"></script>
-<script src="/js/vue/system/destination/detail.js"></script>
+<script src="../../js/vue/vue.min.js"></script>
+<script src="../../js/vue/system/destination/detail.js"></script>
 </html>

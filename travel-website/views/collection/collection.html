@@ -154,32 +154,17 @@
                         </div>
 
                         <h2 class="post-title yahei ">
-                            <a href="javascript:;" class="title-link" target="_blank">{{s.title}}</a>
+
+                            <a :href="'/views/strategy/detail.html?id='+s.id" class="title-link" target="_blank">{{s.title}}</a>
                         </h2>
                         <div class="post-content" v-html="s.summary">
                             想去海边玩，坐飞机最方便快捷也不需要任何签证的非三亚莫属了。
                             此次行程适合仅需在海边享受，放松身心，体验五星级酒店环境和服务，只玩经典景点的玩法哦...
                         </div>
-                        <span class="status"><i class="icon_view"></i>{{s.viewnum}}<i class="icon_comment"></i>{{s.replynum}}</span>
+                        <span class="status"><i class="icon_view"></i>{{s.viewNum}}<i class="icon_comment"></i>{{s.replyNum}}</span>
                     </li>
 
-                    <!--<li class="post-item clearfix">
-                        <div class="post-cover">
-                            <a href="javascript:;" target="_blank">
-                                <img class="lazy" width="215" height="135" alt="带着母亲去三亚悠闲的自由行，高性价比的出行方式_游记"
-                                     src="http://b4-q.mafengwo.net/s13/M00/C5/47/wKgEaVzf-ymAcJFtAAahtY5521o75.jpeg?imageMogr2%2Fthumbnail%2F%21230x142r%2Fgravity%2FCenter%2Fcrop%2F%21230x142%2Fquality%2F90"
-                                     style="display: inline;"></a>
-                        </div>
 
-                        <h2 class="post-title yahei ">
-                            <a href="javascript:;" class="title-link" target="_blank">带着母亲去三亚悠闲的自由行，高性价比的出行方式</a>
-                        </h2>
-                        <div class="post-content">
-                            想去海边玩，坐飞机最方便快捷也不需要任何签证的非三亚莫属了。
-                            此次行程适合仅需在海边享受，放松身心，体验五星级酒店环境和服务，只玩经典景点的玩法哦...
-                        </div>
-                        <span class="status"><i class="icon_view"></i>122<i class="icon_comment"></i>0</span>
-                    </li>-->
                 </ul>
             </div>
 

@@ -1,5 +1,6 @@
 package cn.linstudy.travel.qo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(value="目的地的查询QO")
 public class DestinationQueryObject extends QueryObject{
 
   @ApiModelProperty(value="关键字")

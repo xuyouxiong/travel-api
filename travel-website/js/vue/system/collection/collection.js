@@ -7,7 +7,13 @@ var vue = new Vue({
 
     },
     mounted:function () {
-        //当前登录用户收藏的攻略列表
+        //游记查询
+        ajaxGet("/collections/query", {}, function (data) {
+            let _this;
+            vue.strategyList = data.data;
+            console.log(vue.strategyList)
+
+        })
 
     }
 });

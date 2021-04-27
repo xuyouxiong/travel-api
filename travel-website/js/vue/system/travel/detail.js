@@ -106,8 +106,10 @@ var vue = new Vue({
             ajaxPost("/travels/commentAdd",param, function (data) {
                 $("#commentContent").val("");
                 $("#commentContent").attr("placeholder","");
-
                 vue.queryComments( param.travelId);
+                //游记评论不分页
+                this.queryComments(param.id);
+
             })
         },
         queryComments:function (travelId) {
@@ -134,7 +136,7 @@ var vue = new Vue({
         })
 
         //点击量前3的攻略文章
-        ajaxGet("/destinations/strategies/viewnumTop3",{destId:param.destId}, function (data) {
+        ajaxGet("/strategies/viewnumTop3",{destId:param.destId}, function (data) {
             vue.strategies = data.data;
         })
 
@@ -144,16 +146,11 @@ var vue = new Vue({
             _this.content = data.data.content
         })
 
-
-
-
         //游记点击量前3
-        ajaxGet("/destinations/travels/viewnumTop3",{destId:param.destId}, function (data) {
+        ajaxGet("/travels/viewnumTop3",{destId:param.destId}, function (data) {
             _this.travels = data.data;
         })
 
-        //游记评论不分页
-        this.queryComments(param.id);
 
 
 

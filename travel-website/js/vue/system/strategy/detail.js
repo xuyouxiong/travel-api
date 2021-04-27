@@ -13,7 +13,7 @@ var vue = new Vue({
                 if(data.data){
                     popup("顶成功啦");
                 }else{
-                    popup("今天你已经定过了");
+                    popup("今天你已经顶过了");
                 }
                 vue.queryStatisVo(vue.strategy.id);
             })
@@ -22,10 +22,11 @@ var vue = new Vue({
             ajaxPost("/strategies/favor",{sid:vue.strategy.id}, function (data) {
                 if(data.data){
                     popup("收藏成功");
+                    $(".btn-collect i").addClass('on-i02');
                 }else{
                     popup("已取消收藏");
+                    $(".btn-collect i").removeClass('on-i02');
                 }
-
 
                 vue.queryStatisVo(vue.strategy.id);
                 if(user){
@@ -53,6 +54,7 @@ var vue = new Vue({
             strategyId = strategyId || vue.strategy.id;
             ajaxGet("/strategies/comments", {currentPage:page, strategyId:strategyId}, function(data){
                 vue.page = data.data;
+                console.log(data.data);
                 buildPage(vue.page.number +1, vue.page.totalPages,vue.commentPage);
             })
         },
@@ -76,15 +78,17 @@ var vue = new Vue({
         },
         queryStatisVo:function (sid) {
             //统计数据
-            ajaxGet("/strategies/statisVo",{sid:sid}, function (data) {
+            ajaxGet("/strategies/statistic",{sid:sid}, function (data) {
+                // console.log(data.data);
                 vue.vo =data.data;
             })
 
             
         },
+        // 回显是否收藏
         queryUserFavor:function (sid,userId) {
             ajaxGet("/users/strategies/favor",{sid:vue.strategy.id, userId:userId}, function (data) {
-                console.log(data.data);
+                // console.log(data.data);
                 if(data.data){
                     $(".btn-collect i").addClass('on-i02');
                 }else{
@@ -114,7 +118,7 @@ var vue = new Vue({
             _this.strategy = data.data;
             _this.content = data.data.content;
 
-            //用户收藏攻略id集合
+            // 用户收藏攻略id集合
             if(user){
                 _this.queryUserFavor(param.id,user.id);
             }
@@ -125,8 +129,6 @@ var vue = new Vue({
 
         //统计数据
         _this.queryStatisVo(param.id);
-
-
     }
 });
 

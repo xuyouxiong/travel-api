@@ -2,6 +2,8 @@ package cn.linstudy.travel.controller;
 
 
 import cn.linstudy.travel.annotation.PassLogin;
+import cn.linstudy.travel.annotation.UserParam;
+import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.service.UserInfoService;
 import cn.linstudy.travel.vo.UserInfoLoginVO;
@@ -63,6 +65,18 @@ public class UserInfoController {
   @GetMapping("login")
   public JsonResult login(UserInfoLoginVO userInfoRegisterVO){
     return userInfoService.login(userInfoRegisterVO);
+  }
+
+  @ApiOperation(value = "查询是否收藏")
+  @GetMapping("strategies/favor")
+  public JsonResult favor(Long sid ,Long userId){
+    return JsonResult.success(userInfoService.favor(sid,userId));
+  }
+
+  @ApiOperation(value = "根据id获取用户")
+  @GetMapping("get")
+  public JsonResult getUserById(Long id){
+    return JsonResult.success(userInfoService.getById(id));
   }
 
 }

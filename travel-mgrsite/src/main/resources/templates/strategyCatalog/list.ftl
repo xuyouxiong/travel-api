@@ -69,7 +69,7 @@
             </div>
             <#setting number_format="#">
             <!--高级查询--->
-            <form class="form-inline" id="searchForm" action="/strategyCatalog/list" method="post">
+            <form class="form-inline" id="searchForm" action="/strategyCatalog/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
                 <a href="JavaScript:;" class="btn btn-success inputBtn"><span class="glyphicon glyphicon-plus"></span>  添加</a>
             </form>

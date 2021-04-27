@@ -54,7 +54,7 @@
             </div>
             <#setting number_format="#">
             <!--高级查询--->
-            <form class="form-inline" id="searchForm" action="/strategyTheme/list" method="post">
+            <form class="form-inline" id="searchForm" action="/strategyTheme/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
                 <a href="JavaScript:;" class="btn btn-success inputBtn"><span class="glyphicon glyphicon-plus"></span>  添加</a>
             </form>
@@ -136,6 +136,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal" >取消</button>
             </div>
         </div>
+</div>
 </div>
 </body>
 </html>

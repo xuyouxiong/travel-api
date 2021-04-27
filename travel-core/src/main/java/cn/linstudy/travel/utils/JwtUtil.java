@@ -69,14 +69,13 @@ public class  JwtUtil {
       audience = JWT.decode(token).getAudience().get(0);
     } catch (JWTDecodeException j) {
       //这里是token解析失败
-      throw new LogicException("Token解析失败");
+      throw new LogicException("未登录");
     }
     return audience;
   }
 
   public static void main(String[] args) {
-    HashMap<String, String> map = new HashMap<>();
-    map.put("phone","13700000001");
-    System.out.println(getToken("20", map));
+    System.out.println(getAudience(
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxIiwicGhvbmUiOiIxMzcwMDAwMDAwMCIsImV4cCI6MTYxODgxODE0NCwiaWF0IjoxNjE4ODE2MzQ0fQ.uawP4x8MpbguQFufn0iYRArgonddOAVJMpZnj1DaGQE"));
   }
 }

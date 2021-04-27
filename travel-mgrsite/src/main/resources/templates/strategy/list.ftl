@@ -47,7 +47,7 @@
             </div>
             <#setting number_format="#">
             <!--高级查询--->
-            <form class="form-inline" id="searchForm" action="/strategy/list" method="post">
+            <form class="form-inline" id="searchForm" action="/strategy/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
                 <a href="/strategy/input" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  添加</a>
             </form>
