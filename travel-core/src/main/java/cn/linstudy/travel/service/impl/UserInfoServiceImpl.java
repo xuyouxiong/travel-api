@@ -33,7 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Description 用户业务层接口实现类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 14:23
  */
 @Service
@@ -51,7 +51,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
   StringRedisTemplate redisTemplate;
   /**
       * @Description: 检查手机是否注册过实现类
-      * @author XiaoLin
+      * 
       * @date 2021/4/9
       * @Param: [phone]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -69,7 +69,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
 
   /**
       * @Description: 发送验证码实现类
-      * @author XiaoLin
+      * 
       * @date 2021/4/10
       * @Param: [phone]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -88,7 +88,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
 
   /**
       * @Description: 用户注册实现类
-      * @author XiaoLin
+      * 
       * @date 2021/4/10
       * @Param: [userInfoRegisterVO]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -111,7 +111,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
 
   /**
       * @Description: 登录实现类
-      * @author XiaoLin
+      * 
       * @date 2021/4/10
       * @Param: [userInfoRegisterVO]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -147,7 +147,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
 
   /**
       * @Description: 校验根据id查询的用户是否存在
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [parseLong]
       * @return cn.linstudy.travel.domain.UserInfo
@@ -159,7 +159,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
 
   /**
       * @Description: 判断是白色星星还是黑色星星
-      * @author XiaoLin
+      * 
       * @date 2021/4/20
       * @Param: [sid, userId]
       * @return boolean

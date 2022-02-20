@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/13 14:40
  */
 @Service
@@ -36,7 +36,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
 
   /**
       * @Description: 查询所有
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [qo]
       * @return java.util.List<cn.linstudy.travel.domain.Destination>
@@ -50,7 +50,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
 
   /**
       * @Description: 增加
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [destination]
       * @return void
@@ -62,7 +62,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
 
   /**
       * @Description: 分页加高级查询
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [qo]
       * @return com.baomidou.mybatisplus.extension.plugins.pagination.Page<cn.linstudy.travel.domain.Destination>
@@ -78,7 +78,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
 
   /**
       * @Description: 删除目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [id]
       * @return void
@@ -90,7 +90,7 @@ public class DestinationServiceImpl extends ServiceImpl<DestinationMapper, Desti
 
   /**
       * @Description: 查看前端界面的前几级目录
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [qo]
       * @return java.util.Map

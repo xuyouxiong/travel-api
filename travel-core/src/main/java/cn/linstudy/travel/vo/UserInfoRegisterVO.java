@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Description 用户注册提交表单的VO
- * @Author XiaoLin
+ * 
  * @Date 2021/4/10 9:48
  */
 @Data

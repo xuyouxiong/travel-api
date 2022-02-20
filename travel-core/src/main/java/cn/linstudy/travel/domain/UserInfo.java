@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 /**
  * @Description 用户信息实体类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 14:18
  */
 @Setter

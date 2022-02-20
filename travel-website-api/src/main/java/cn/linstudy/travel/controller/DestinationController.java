@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description 前端界面的目的地控制器接口
- * @Author XiaoLin
+ * 
  * @Date 2021/4/13 21:25
  */
 @Controller

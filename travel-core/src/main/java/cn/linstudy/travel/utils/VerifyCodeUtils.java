@@ -10,12 +10,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Random;
-
-/**
- *@创建人  XiaoLin
- *@创建时间  2018/11/27 17:36
- *@描述   验证码生成
- */
 public class VerifyCodeUtils{
 
 

@@ -46,7 +46,7 @@ public class Region extends BaseDomain{
 
     /**
         * @Description: 用于将字符串的ids解析成一个集合
-        * @author XiaoLin
+        * 
         * @date 2021/4/14
         * @Param: []
         * @return java.util.List<java.lang.Long>
@@ -66,7 +66,7 @@ public class Region extends BaseDomain{
 
     /**
         * @Description: 将对象转为JSON字符串
-        * @author XiaoLin
+        * 
         * @date 2021/4/14
         * @Param: []
         * @return java.lang.String

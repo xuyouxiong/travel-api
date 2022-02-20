@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  */
 public interface VisitorMapper extends BaseMapper<Visitor> {
 

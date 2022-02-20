@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Description 景点控制器
- * @Author XiaoLin
+ * 
  * @Date 2021/4/14 18:41
  */
 @RestController

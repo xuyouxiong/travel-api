@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Description 景点的查询QO
- * @Author XiaoLin
+ *
  * @Date 2021/4/14 18:43
  */
 @ApiModel(value="景点的查询QO")

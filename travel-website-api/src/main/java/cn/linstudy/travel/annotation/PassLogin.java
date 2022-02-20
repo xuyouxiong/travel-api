@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Description 登录拦截注解，如果请求方法贴有该注解，表示该方法需要进行登录检查
- * @Author XiaoLin
+ * 
  * @Date 2021/4/11 15:01
  */
 @Target({ElementType.METHOD})

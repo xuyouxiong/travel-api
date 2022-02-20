@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/10 9:18
  */
 @Service
@@ -35,7 +35,7 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
 
   /**
       * @Description: 将登录Token放进Redis
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [key, token]
       * @return void
@@ -47,7 +47,7 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
 
   /**
       * @Description: 通过key获取value
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [key]
       * @return java.lang.String
@@ -59,7 +59,7 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
 
   /**
       * @Description: 根据key重新设置时间
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [key]
       * @return void

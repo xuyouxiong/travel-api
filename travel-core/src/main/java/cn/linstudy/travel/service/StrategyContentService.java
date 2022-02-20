@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * @Description
- * @Author XiaoLin
+ *
  * @Date 2021/4/15 18:09
  */
 public interface StrategyContentService extends IService<StrategyContent> {

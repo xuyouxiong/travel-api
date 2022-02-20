@@ -11,14 +11,14 @@ import java.util.Map;
 
 /**
  * @Description 目的地的业务类接口
- * @Author XiaoLin
+ * 
  * @Date 2021/4/13 14:39
  */
 public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description: 查询所有目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: []
       * @return java.util.List<cn.linstudy.travel.domain.Destination>
@@ -27,7 +27,7 @@ public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description:插入目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [destination]
       * @return void
@@ -36,7 +36,7 @@ public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description: 分页查询所有目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [qo]
       * @return com.baomidou.mybatisplus.extension.plugins.pagination.Page<cn.linstudy.travel.domain.Destination>
@@ -45,7 +45,7 @@ public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description: 通过id删除目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [id]
       * @return void
@@ -54,7 +54,7 @@ public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description: 获取前端界面的上几级目录
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [qo]
       * @return java.lang.Object
@@ -64,7 +64,7 @@ public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description: 根据区域查询该区域底下的目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/14
       * @Param: [regionId]
       * @return java.util.List<cn.linstudy.travel.domain.Destination>
@@ -73,7 +73,7 @@ public interface DestinationService extends IService<Destination> {
 
   /**
       * @Description: 通过名字查询目的地
-      * @author XiaoLin
+      * 
       * @date 2021/4/22
       * @Param: [keyword]
       * @return java.awt.Desktop

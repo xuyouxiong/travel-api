@@ -13,14 +13,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 14:46
  */
 @RestController
@@ -56,8 +53,9 @@ public class UserInfoController {
   }
 
   @ApiOperation(value = "用户注册")
-  @GetMapping("register")
+  @PostMapping("register")
   public JsonResult sendVerifyCode( UserInfoRegisterVO userInfoRegisterVO){
+    System.out.println("进入用户注册的接口");
     return userInfoService.register(userInfoRegisterVO);
   }
 

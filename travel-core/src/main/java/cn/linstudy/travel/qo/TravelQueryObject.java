@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Description 游记查询VO
- * @Author XiaoLin
+ *
  * @Date 2021/4/17 14:14
  */
 @AllArgsConstructor

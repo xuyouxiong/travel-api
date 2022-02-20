@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Description Redis数据初始化监听器，将mysql中的数据同步到redis
- * @Author XiaoLin
+ *
  * @Date 2021/4/20 15:57
  */
 @Slf4j

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Description 游记条件查询QO
- * @Author XiaoLin
+ * 
  * @Date 2021/4/17 19:53
  */
 @AllArgsConstructor

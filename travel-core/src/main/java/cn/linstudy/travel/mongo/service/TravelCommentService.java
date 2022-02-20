@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/19 21:56
  */
 public interface TravelCommentService {

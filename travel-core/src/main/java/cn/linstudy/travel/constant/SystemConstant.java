@@ -2,7 +2,7 @@ package cn.linstudy.travel.constant;
 
 /**
  * @Description 系统常量
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 19:46
  */
 public class SystemConstant {

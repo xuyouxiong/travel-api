@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description 收藏控制器
- * @Author XiaoLin
+ *
  * @Date 2021/4/23 20:39
  */
 @Controller

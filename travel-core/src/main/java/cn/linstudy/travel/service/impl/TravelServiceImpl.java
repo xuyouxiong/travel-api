@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description 游记相关的业务实现类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/17 14:11
  */
 @Service
@@ -24,9 +24,13 @@ public class TravelServiceImpl extends ServiceImpl<TravelMapper, Travel> impleme
 
   @Autowired
   UserInfoService userInfoService;
+
+  /**
+   *
+   */
   /**
       * @Description: 分页查询所有游记
-      * @author XiaoLin
+      * 
       * @date 2021/4/17
       * @Param: [qo]
       * @return java.util.List<cn.linstudy.travel.domain.Travel>

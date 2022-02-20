@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/14 21:03
  */
 public interface StrategyCatalogService extends IService<StrategyCatalog> {

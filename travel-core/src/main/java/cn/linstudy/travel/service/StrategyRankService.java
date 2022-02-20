@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * @Description 攻略排行的业务类接口
- * @Author XiaoLin
+ *
  * @Date 2021/4/16 14:07
  */
 public interface StrategyRankService extends IService<StrategyRank> {

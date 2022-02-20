@@ -40,7 +40,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/14 21:50
  */
 @Service
@@ -71,7 +71,7 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   /**
    * @return com.baomidou.mybatisplus.extension.plugins.pagination.Page<cn.linstudy.travel.domain.Strategy>
    * @Description: 根据条件查询
-   * @author XiaoLin
+   * 
    * @date 2021/4/16
    * @Param: [qo]
    */
@@ -106,7 +106,7 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   /**
    * @return cn.linstudy.travel.qo.response.JsonResult
    * @Description: 修改状态
-   * @author XiaoLin
+   * 
    * @date 2021/4/16
    * @Param: [state, id]
    */
@@ -122,7 +122,7 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   /**
    * @return cn.linstudy.travel.qo.response.JsonResult
    * @Description: 查询出攻略前三名
-   * @author XiaoLin
+   * 
    * @date 2021/4/16
    * @Param: [destId]
    */
@@ -137,7 +137,7 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   /**
    * @return cn.linstudy.travel.qo.response.JsonResult
    * @Description: 根据id查询出对应的攻略
-   * @author XiaoLin
+   * 
    * @date 2021/4/16
    * @Param: [id]
    */
@@ -151,7 +151,7 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   /**
    * @return cn.linstudy.travel.qo.response.JsonResult
    * @Description: 攻略排行
-   * @author XiaoLin
+   * 
    * @date 2021/4/16
    * @Param: [type]
    */
@@ -178,7 +178,7 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   /**
    * @return boolean
    * @Description: 修改或者增加攻略
-   * @author XiaoLin
+   * 
    * @date 2021/4/16
    * @Param: [strategy]
    */

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>叩丁狼骡窝窝后台管理系统</title>
+    <title>后台管理系统</title>
     <#include "../common/header.ftl" >
     <script>
         $(function(){

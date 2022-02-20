@@ -11,11 +11,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @Description
- * @Author XiaoLin
- * @Date 2021/4/10 21:21
- */
 public class  JwtUtil {
   private static String TOKEN = "XiaoLin";// 私钥
 
@@ -68,6 +63,8 @@ public class  JwtUtil {
     try {
       audience = JWT.decode(token).getAudience().get(0);
     } catch (JWTDecodeException j) {
+
+      System.out.println("检验是否登录");
       //这里是token解析失败
       throw new LogicException("未登录");
     }

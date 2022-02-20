@@ -10,14 +10,12 @@ import java.util.Map;
 
 /**
  * @Description
- * @Author XiaoLin
  * @Date 2021/4/14 21:48
  */
 public interface StrategyService extends IService<Strategy> {
 
   /**
       * @Description: 攻略的分页显示
-      * @author XiaoLin
       * @date 2021/4/16
       * @Param: [qo]
       * @return com.baomidou.mybatisplus.extension.plugins.pagination.Page<cn.linstudy.travel.domain.Strategy>
@@ -26,7 +24,7 @@ public interface StrategyService extends IService<Strategy> {
 
   /**
       * @Description: 修改攻略状态
-      * @author XiaoLin
+      * 
       * @date 2021/4/16
       * @Param: [state, id]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -35,7 +33,7 @@ public interface StrategyService extends IService<Strategy> {
 
   /**
       * @Description: 查看前三攻略
-      * @author XiaoLin
+      * 
       * @date 2021/4/16
       * @Param: [destId]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -44,7 +42,7 @@ public interface StrategyService extends IService<Strategy> {
 
   /**
       * @Description: 根据id攻略
-      * @author XiaoLin
+      * 
       * @date 2021/4/16
       * @Param: [id]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -53,7 +51,6 @@ public interface StrategyService extends IService<Strategy> {
 
   /**
       * @Description: 排行榜业务类
-      * @author XiaoLin
       * @date 2021/4/16
       * @Param: [type]
       * @return cn.linstudy.travel.qo.response.JsonResult

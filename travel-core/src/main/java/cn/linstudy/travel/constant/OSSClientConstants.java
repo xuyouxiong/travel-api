@@ -11,7 +11,7 @@ import org.yaml.snakeyaml.Yaml;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/15 14:26
  */
 @PropertySource(value = "classpath:application.yml")

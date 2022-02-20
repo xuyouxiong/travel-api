@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 /**
  * @Description 配置类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 14:51
  */
 @Configuration

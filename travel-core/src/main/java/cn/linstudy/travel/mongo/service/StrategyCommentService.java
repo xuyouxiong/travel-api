@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 /**
  * @Description 攻略评论的服务层接口
- * @Author XiaoLin
+ * 
  * @Date 2021/4/19 13:09
  */
 public interface StrategyCommentService {

@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
     * @Description: 用于抽取所有的实体类id
-    * @author XiaoLin
+    * 
     * @date 2021/4/9
     */
 @Data

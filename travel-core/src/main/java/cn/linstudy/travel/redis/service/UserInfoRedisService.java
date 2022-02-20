@@ -4,7 +4,7 @@ import cn.linstudy.travel.domain.UserInfo;
 
 /**
  * @Description 用户缓存的业务类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/10 9:13
  */
 public interface UserInfoRedisService {
@@ -18,7 +18,7 @@ public interface UserInfoRedisService {
 
   /**
       * @Description: 将登录的Token放入Redis，时间为30分钟
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [key, token]
       * @return void
@@ -27,7 +27,7 @@ public interface UserInfoRedisService {
 
   /**
       * @Description: 根据key拿到value
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [key]
       * @return java.lang.String
@@ -36,7 +36,7 @@ public interface UserInfoRedisService {
 
   /**
       * @Description: 重新设置redis的过期时间
-      * @author XiaoLin
+      * 
       * @date 2021/4/19
       * @Param: [key]
       * @return void
@@ -45,7 +45,7 @@ public interface UserInfoRedisService {
   
   /**
       * @Description: 通过token获取用户
-      * @author XiaoLin
+      * 
       * @date 2021/4/19
       * @Param: [token]
       * @return cn.linstudy.travel.domain.UserInfo

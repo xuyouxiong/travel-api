@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>叩丁狼客户管理系统->用户登录</title>
+	<title>管理系统->用户登录</title>
 <link rel="stylesheet" href="/css/core.css" type="text/css" />
 	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/core.css" type="text/css" />
@@ -26,10 +26,11 @@ body{
 <script type="text/javascript">
 	$(function(){
 		$("#btn_submit").click(function () {
-			$.post("/login", $("#loginForm").serialize(), function (data) {
+			$.post("/admin/login", $("#loginForm").serialize(), function (data) {
+
 			    console.log(data);
-                if(data.success){
-                    window.location.href="/main";
+                if(data.code == 200){
+                    window.location.href="/admin/list";
                 }else{
                     $.messager.alert("温馨提示", data.msg)
                 }
@@ -43,7 +44,7 @@ body{
 </head>
 <body>
 	<div class="container cm-container">
-		<h3 class="text-center"><font style="color: #337ab7;">叩丁狼骡窝窝管理系统</font></h3>
+		<h3 class="text-center"><font style="color: #337ab7;">四季有你管理系统</font></h3>
 		<hr />
 		<div class="login">
 			<form id="loginForm" action="/login.do" method="post">

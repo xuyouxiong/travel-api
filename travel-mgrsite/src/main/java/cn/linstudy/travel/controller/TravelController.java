@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/17 14:09
  */
 @Controller
@@ -34,7 +34,7 @@ public class TravelController {
 
   /**
       * @Description: 高级查询所有
-      * @author XiaoLin
+      * 
       * @date 2021/4/17
       * @Param: [qo, model]
       * @return java.lang.String
@@ -48,7 +48,7 @@ public class TravelController {
 
 /**
     * @Description: 通过id获取内容
-    * @author XiaoLin
+    * 
     * @date 2021/4/17
     * @Param: [id]
     * @return cn.linstudy.travel.qo.response.JsonResult
@@ -62,7 +62,7 @@ public class TravelController {
 
   /**
       * @Description: 游记审核
-      * @author XiaoLin
+      * 
       * @date 2021/4/17
       * @Param: [id, state]
       * @return cn.linstudy.travel.qo.response.JsonResult

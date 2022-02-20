@@ -17,6 +17,7 @@ var vue = new Vue({
         saveOrUpdate:function (state) {
             $("#state").val(state);
             var param = $("#editForm").serialize() ;
+            console.log("")
             ajaxPost("/travels/saveOrUpdate", param, function (data) {
                 //还缺一参数：目的地id
                 var destId = $("#region").val();

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
  * @Description 拦截器
- * @Author XiaoLin
+ * 
  * @Date 2021/4/11 14:03
  */
 

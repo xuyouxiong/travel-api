@@ -1,5 +1,6 @@
 package cn.linstudy.travel.controller;
 
+import cn.linstudy.travel.annotation.PassLogin;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.service.BannerService;
 import cn.linstudy.travel.service.StrategyService;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/22 20:56
  */
 @RestController
@@ -28,6 +29,7 @@ public class BannerController {
   @Autowired
   StrategyService strategyService;
 
+  @PassLogin
   @GetMapping("travel")
   public JsonResult getTravel(){
     return JsonResult.success(travelService.list(null));

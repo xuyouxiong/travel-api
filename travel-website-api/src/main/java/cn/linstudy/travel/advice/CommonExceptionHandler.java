@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *  ControllerAdvice  controller类功能增强注解, 动态代理controller类实现一些额外功能
  *  请求进入controller映射方法之前做功能增强: 经典用法:日期格式化
  *  请求进入controller映射方法之后做功能增强: 经典用法:统一异常处理
- * @Author XiaoLin
+ * 
  * @Date 2021/4/10 19:17
  */
 @ControllerAdvice

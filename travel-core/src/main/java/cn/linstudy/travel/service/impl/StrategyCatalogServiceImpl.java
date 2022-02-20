@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/14 21:04
  */
 @Service
@@ -35,7 +35,7 @@ public class StrategyCatalogServiceImpl extends
   // todo 查询所有分类
   /**
       * @Description: 查询所有分类
-      * @author XiaoLin
+      * 
       * @date 2021/4/15
       * @Param: []
       * @return java.util.List<cn.linstudy.travel.vo.StrategyCatalogVO>
@@ -61,7 +61,7 @@ public class StrategyCatalogServiceImpl extends
 
   /**
       * @Description: 解析字符串类型的多个名字和多个id，封装成一个List<StrategyCatalog>
-      * @author XiaoLin
+      * 
       * @date 2021/4/15
       * @Param: [ids, names]
       * @return java.util.List<cn.linstudy.travel.domain.StrategyCatalog>

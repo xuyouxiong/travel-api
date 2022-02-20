@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * @Description Swagger配置类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 17:22
  */
 @Configuration//表示这是一个配置类

@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  */
 public interface VisitorNumService extends IService<VisitorNum> {
 

@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/14 20:22
  */
 public interface StrategyThemeService extends IService<StrategyTheme> {

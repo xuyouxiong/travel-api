@@ -25,7 +25,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/19 19:48
  */
 @Service
@@ -66,7 +66,7 @@ public class StrategyStatisticsRedisServiceImpl implements StrategyStatisticsRed
 
   /**
       * @Description: 获取VO对象方法封装
-      * @author XiaoLin
+      * 
       * @date 2021/4/20
       * @Param: [strategyId]
       * @return cn.linstudy.travel.redis.vo.StrategyStatisticsVO
@@ -95,7 +95,7 @@ public class StrategyStatisticsRedisServiceImpl implements StrategyStatisticsRed
 
   /**
       * @Description: 阅读数自增
-      * @author XiaoLin
+      * 
       * @date 2021/4/20
       * @Param: [strategyId]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -111,7 +111,7 @@ public class StrategyStatisticsRedisServiceImpl implements StrategyStatisticsRed
 
   /**
       * @Description: 收藏攻略
-      * @author XiaoLin
+      * 
       * @date 2021/4/23
       * @Param: [strategyId 攻略id, sid 用户id]
       * @return boolean

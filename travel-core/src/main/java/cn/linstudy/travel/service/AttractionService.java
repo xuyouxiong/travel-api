@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * @Description 景点业务类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/14 18:36
  */
 public interface AttractionService extends IService<Attraction> {

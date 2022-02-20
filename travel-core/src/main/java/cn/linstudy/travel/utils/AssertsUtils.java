@@ -5,7 +5,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * @Description 断言工具类
- * @Author XiaoLin
+ *
  * @Date 2021/4/10 19:24
  */
 public class AssertsUtils {
@@ -16,7 +16,7 @@ public class AssertsUtils {
   /**
    * @return void
    * @Description: 判断指定的参数是否为null，或者空串，如果为空抛出异常
-   * @author XiaoLin
+   *
    * @date 2021/4/10
    * @Param: [text, message]
    */
@@ -28,7 +28,7 @@ public class AssertsUtils {
 
   /**
       * @Description: 判断传入的参数是否相等
-      * @author XiaoLin
+      *
       * @date 2021/4/10
       * @Param: [param1, param2, message]
       * @return void

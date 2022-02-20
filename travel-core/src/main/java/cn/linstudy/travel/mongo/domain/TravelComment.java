@@ -2,7 +2,7 @@ package cn.linstudy.travel.mongo.domain;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  * @Date 2021/4/19 21:51
  */
 

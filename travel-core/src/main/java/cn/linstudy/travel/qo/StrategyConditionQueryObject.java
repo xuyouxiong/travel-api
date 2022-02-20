@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Description 攻略条件查询QO
- * @Author XiaoLin
+ * 
  * @Date 2021/4/16 21:15
  */
 @Data

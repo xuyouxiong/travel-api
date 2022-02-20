@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @Description 用户业务层接口
- * @Author XiaoLin
+ * 
  * @Date 2021/4/9 14:21
  */
 // 继承MyBatis-Plus的通用Service接口，泛型是实体类
@@ -18,7 +18,7 @@ public interface UserInfoService extends IService<UserInfo> {
 
   /**
       * @Description:检查手机是否注册过
-      * @author XiaoLin
+      * 
       * @date 2021/4/9
       * @Param: [phone]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -27,7 +27,7 @@ public interface UserInfoService extends IService<UserInfo> {
 
   /**
       * @Description:发送验证码
-      * @author XiaoLin
+      * 
       * @date 2021/4/10
       * @Param: [phone]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -36,7 +36,7 @@ public interface UserInfoService extends IService<UserInfo> {
 
   /**
       * @Description:用户注册
-      * @author XiaoLin
+      * 
       * @date 2021/4/10
       * @Param: [userInfoRegisterVO]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -45,7 +45,7 @@ public interface UserInfoService extends IService<UserInfo> {
 
   /**
       * @Description: 登录
-      * @author XiaoLin
+      * 
       * @date 2021/4/10
       * @Param: [userInfoRegisterVO]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -54,7 +54,7 @@ public interface UserInfoService extends IService<UserInfo> {
 
   /**
       * @Description: 校验根据id查询的用户是否存在
-      * @author XiaoLin
+      * 
       * @date 2021/4/11
       * @Param: [parseLong]
       * @return cn.linstudy.travel.domain.UserInfo

@@ -1,10 +1,12 @@
 package cn.linstudy.travel.domain;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * 游记表
  *
- * @author XiaoLin
+ * 
  * @since 2021-04-17 14:02:37
  * @description 
  */
@@ -62,11 +64,11 @@ public class Travel extends BaseDomain implements Serializable {
 
     private Integer person;  //和谁旅游
 
-    private Date createTime; //创建时间
+    private LocalDateTime createTime; //创建时间
 
     private Date releaseTime; //发布时间
 
-    private Date lastUpdateTime; //最新更新时间内
+    private LocalDateTime lastUpdateTime; //最新更新时间内
 
     private Integer ispublic=ISPUBLIC_NO; //是否发布
 

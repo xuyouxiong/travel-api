@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Description
- * @Author XiaoLin
+ * 
  */
 public interface VisitorService extends IService<Visitor> {
 

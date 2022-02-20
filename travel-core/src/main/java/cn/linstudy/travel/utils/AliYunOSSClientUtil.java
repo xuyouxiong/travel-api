@@ -24,10 +24,6 @@ import java.util.Date;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- * @author: XiaoLin
- * @Date: 2018/6/10 17:45 Describe: 阿里云OSS连接
- */
 @Slf4j
 public class AliYunOSSClientUtil {
 

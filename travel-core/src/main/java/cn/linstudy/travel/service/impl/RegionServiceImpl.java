@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description 地区的业务实现类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/13 9:00
  */
 @Service
@@ -45,7 +45,7 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 
   /**
       * @Description: 修改为热门或者普通
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [hot, id]
       * @return void
@@ -60,7 +60,7 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 
   /**
       * @Description: 删除
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: [id]
       * @return cn.linstudy.travel.qo.response.JsonResult
@@ -73,7 +73,7 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
 
   /**
       * @Description: 获得热门地区
-      * @author XiaoLin
+      * 
       * @date 2021/4/13
       * @Param: []
       * @return cn.linstudy.travel.qo.response.JsonResult

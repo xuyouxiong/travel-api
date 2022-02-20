@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description 游记内容业务实现类
- * @Author XiaoLin
+ * 
  * @Date 2021/4/17 16:07
  */
 @Service
@@ -39,7 +39,7 @@ public class TravelContentServiceImpl extends ServiceImpl<TravelContentMapper, T
 
   /**
       * @Description: 通过id查询内容
-      * @author XiaoLin
+      * 
       * @date 2021/4/17
       * @Param: [id]
       * @return cn.linstudy.travel.domain.TravelContent
@@ -51,7 +51,7 @@ public class TravelContentServiceImpl extends ServiceImpl<TravelContentMapper, T
 
   /**
       * @Description: 内容审核
-      * @author XiaoLin
+      * 
       * @date 2021/4/17
       * @Param: [id, state]
       * @return cn.linstudy.travel.qo.response.JsonResult
