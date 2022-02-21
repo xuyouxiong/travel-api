@@ -34,7 +34,6 @@ public enum RedisKeyEnum {
   // 用户登录Toekn
   ENUM_LOGIN_TOKEN("login_token",SystemConstant.USER_INFO_TOKEN_VAI_TIME*60L);
 
-
   // 前缀
   private String prefix;
   // 有效时长

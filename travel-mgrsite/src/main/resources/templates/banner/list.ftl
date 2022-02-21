@@ -10,16 +10,32 @@
         var sts;
         var ts;
         $(function () {
-            $.get("/banner/getAllType", function (data) {
-                if(data.code == 200){
-                    var map = data.data;
-                    sts = map.sts;  //攻略
-                    ts = map.ts;  //游记
+            var token = $.cookie('token')
+            $.ajax({
+                type: 'GET',
+                url: '/banner/getAllType',
+                dataType: 'json',
+                beforeSend:function(xhr){
+                    xhr.setRequestHeader("admin_token",token);
+                },
+                success:function (data) {
+                    if(data.code == 200){
+                        var map = data.data;
+                        sts = map.sts;  //攻略
+                        ts = map.ts;  //游记
 
-                    console.log(sts);
-                    console.log(ts);
+                        console.log(sts);
+                        console.log(ts);
+                    }
+                },
+                error:function () {
+                    popup("网络不通，请联系管理员~");
                 }
             })
+
+            // $.ajax("/banner/getAllType", function (data) {
+            //
+            // })
 
 
 

@@ -89,5 +89,15 @@
 
 <!--设置菜单回显-->
 <script>
+    $(function () {
+        var user = $.cookie('user');
+        var token = $.cookie('token');
+        if (!token) {
+            alert("未登录")
+            location.href = '/login.html'
+        }
+        console.log(user)
+        console.log(token)
+    })
     $(".in li.${currentMenu}").addClass("active");
 </script>

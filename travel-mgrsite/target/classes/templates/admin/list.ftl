@@ -4,6 +4,24 @@
     <#include "../common/header.ftl">
     <script type="text/javascript">
         $(function () {
+            var token = $.cookie('token')
+            $.ajax({
+                type: 'GET',
+                url: '/travel/getContentById',
+                dataType: 'json',
+                data: {
+                    'id': 1
+                },
+                beforeSend:function(xhr){
+                    xhr.setRequestHeader("admin_token",token);
+                },
+                success:function (data) {
+
+                },
+                error:function () {
+                    popup("网络不通，请联系管理员~");
+                }
+            })
             //编辑/添加
             $(".inputBtn").click(function () {
                 //弹出模态框

@@ -34,6 +34,9 @@ public class SystemConstant {
   public static final int CODE_PHONE_REGISTER = 402;
   public static final String PHONE_REGISTER = "该手机已经注册过了";
 
+  public static final int CODE_ADMIN_LOGIN = 402;
+  public static final String ADMIN_LOGIN = "该名称已经注册过了";
+
   public static final int CODE_SEND_PHONE_MESSAGE = 403;
   public static final String MSG_SEND_PHONE_MESSAGE = "发送短信失败";
   public static final int CODE_ERROR = 500;
