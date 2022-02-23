@@ -19,3 +19,4 @@ bin-release/
 .gradle
 .idea
 ./travel-mgrsite/target/*
+./travel-core/target/*
