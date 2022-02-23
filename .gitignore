@@ -20,3 +20,6 @@ bin-release/
 .idea/*
 travel-mgrsite/target/**
 travel-core/target/**
+travel-mgrsite/src/main/resources/application.yml
+travel-core/src/main/resources/application.yml
+travel-website-api/src/main/resources/application.yml
