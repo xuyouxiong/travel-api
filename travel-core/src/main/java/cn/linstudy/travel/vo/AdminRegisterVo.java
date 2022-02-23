@@ -1,2 +1,3 @@
-package cn.linstudy.travel.vo;public class AdminRegisterVo {
+package cn.linstudy.travel.vo;
+public class AdminRegisterVo {
 }
