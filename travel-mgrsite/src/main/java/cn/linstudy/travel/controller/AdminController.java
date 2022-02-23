@@ -4,6 +4,7 @@ import cn.linstudy.travel.annotation.PassLogin;
 import cn.linstudy.travel.constant.SystemConstant;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.exception.LogicException;
+import cn.linstudy.travel.qo.AdminQueryObject;
 import cn.linstudy.travel.qo.DestinationQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.qo.response.LoginResponse;
@@ -45,9 +46,9 @@ public class AdminController {
 
     @ApiOperation(value = "查询所有目的地")
     @RequestMapping("list")
-    public String listAll(Model model, @ModelAttribute("qo") DestinationQueryObject qo){
-        model.addAttribute("page",destinationService.queryList(qo));
-        model.addAttribute("toasts",destinationService.getToasts(qo.getParentId()));
+    public String listAll(Model model, @ModelAttribute("qo") AdminQueryObject qo){
+        model.addAttribute("page", adminService.queryList(qo));
+//        model.addAttribute("toasts",destinationService.getToasts(qo.getParentId()));
         return "admin/list";
     }
 

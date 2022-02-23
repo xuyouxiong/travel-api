@@ -1,9 +1,13 @@
 package cn.linstudy.travel.service;
 
 import cn.linstudy.travel.domain.Admin;
+import cn.linstudy.travel.domain.Destination;
+import cn.linstudy.travel.qo.AdminQueryObject;
+import cn.linstudy.travel.qo.DestinationQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.vo.AdminInfoVo;
 import cn.linstudy.travel.vo.AdminRegisterVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface AdminService extends IService<Admin> {
@@ -27,4 +31,11 @@ public interface AdminService extends IService<Admin> {
      * @return
      */
     JsonResult register(AdminRegisterVo registerVo);
+
+    /**
+     *
+     * @param qo
+     * @return
+     */
+    Page<Admin> queryList(AdminQueryObject qo);
 }

@@ -108,10 +108,7 @@
                 </button>
 
                 <h4>
-                    当前位置: <a href="javascript:;" data-parentid="" class="clickBtn">根</a>
-                    <#list toasts as t>
-                        >> <a href="javascript:;" data-parentid="${t.id}" class="clickBtn">${t.name}</a>
-                    </#list>
+                    当前位置: <a href="javascript:;" data-parentid="" class="clickBtn">用户管理</a>
                 </h4>
 
             </form>
@@ -120,9 +117,12 @@
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>名称</th>
-                    <th>英文</th>
-                    <th>上级</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>法人</th>
+                    <th>手机号码</th>
+                    <th>证书</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -130,13 +130,20 @@
                     <tr>
                         <td>${entity_index+1}</td>
                         <td><a href="/destination/list?parentId=${entity.id}">${entity.name!}</a></td>
-                        <td>${entity.english!}</td>
-                        <td>${(entity.parentName)!"顶级"}</td>
+                        <td>${entity.pass!}</td>
+                        <td>${(entity.faren)!}</td>
+                        <td>${(entity.phone)!}</td>
+                        <td>${(entity.cert)!}</td>
+                        <td>${(entity.status)!}</td>
 
                         <td>
                             <a class="btn btn-info btn-xs inputBtn" href="javascript:;"
                                data-json='${entity.jsonString!}'>
                                 <span class="glyphicon glyphicon-edit"></span> 编辑
+                            </a>
+                            <a class="btn btn-info btn-xs inputBtn" href="javascript:;"
+                               data-json='${entity.jsonString!}'>
+                                <span class="glyphicon glyphicon-download"></span> 下载证书
                             </a>
 
 

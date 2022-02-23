@@ -2,9 +2,11 @@ package cn.linstudy.travel.service.impl;
 
 import cn.linstudy.travel.constant.SystemConstant;
 import cn.linstudy.travel.domain.Admin;
+import cn.linstudy.travel.domain.Region;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.exception.LogicException;
 import cn.linstudy.travel.mapper.AdminInfoMapper;
+import cn.linstudy.travel.qo.AdminQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.redis.RedisKeyEnum;
 import cn.linstudy.travel.redis.service.UserInfoRedisService;
@@ -14,6 +16,7 @@ import cn.linstudy.travel.utils.JwtUtil;
 import cn.linstudy.travel.vo.AdminInfoVo;
 import cn.linstudy.travel.vo.AdminRegisterVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +56,14 @@ public class AdminServiceImpl extends ServiceImpl<AdminInfoMapper, Admin> implem
         admin.setPhone(registerVo.getPhone());
         adminInfoMapper.insert(admin);
         return null;
+    }
+
+    @Override
+    public Page<Admin> queryList(AdminQueryObject qo) {
+        QueryWrapper<Admin> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("id");
+        Page<Admin> page = new Page<>(qo.getCurrentPage(),qo.getPageSize());
+        return super.page(page,queryWrapper);
     }
 
     @Override
