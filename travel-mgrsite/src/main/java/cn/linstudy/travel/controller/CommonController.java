@@ -28,7 +28,7 @@ public class CommonController {
         try {
             String originName = file.getOriginalFilename();
             String name = createImageName();
-            String path = "d:/website_travel/travel-api/travel-mgrsite/target/classes/static/images";
+            String path = "d:/website_travel/travel-api/travel-mgrsite/target/classes/static/images/";
             uploadFile(file.getBytes(), path, name + originName.substring(originName.lastIndexOf("."), originName.length()));
             // 存储的目录
             System.out.println("-----------> 获取到file文件 <-----------");

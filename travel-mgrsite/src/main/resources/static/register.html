@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>四季有你客户管理系统->用户注册</title>
+    <title>四季有你后台管理系统->商家注册</title>
     <link rel="stylesheet" href="/css/core.css" type="text/css" />
     <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/css/core.css" type="text/css" />
@@ -28,6 +28,19 @@
             $("#btn_submit").click(function () {
                 console.log($('#files1')[0].files[0])
                 var formData = new FormData();
+                let name = $("#name").val();
+                let pass = $("#pass").val();
+                if (pass == null || pass == "") {
+                    alert("密码不能为空")
+                    return;
+                }
+                let phone = $("#phone").val()
+                let faren = $("#faren").val()
+                var formDataSubmit = new FormData();
+                formDataSubmit.append("name", name)
+                formDataSubmit.append("pass", pass)
+                formDataSubmit.append("phone", phone)
+                formDataSubmit.append("faren", faren)
                 formData.append("file", $('#files1')[0].files[0])
                 $.ajax({
                     url:'/common/uploadFile', /*接口域名地址*/// 上传文件的接口
@@ -37,17 +50,25 @@
                     processData: false,
                     success:function(res){
                         console.log(res);
+                        formDataSubmit.append("cert", res.msg)
+                        $.post("/admin/register", {
+                            'name': name,
+                            'pass': pass,
+                            'cert': res.msg,
+                            'phone': phone,
+                            'faren': faren
+                        }, function (data) {
+                            console.log(data);
+                            if(data.code == 200){
+                                $.messager.alert("温馨提示", "注册成功")
+                                window.location.href="/login.html";
+                            }else{
+                                $.messager.alert("温馨提示", data.msg)
+                            }
+                        })
                     }
                 })
-                // $.post("/admin/register", $("#loginForm").serialize(), function (data) {
-                //     console.log(data);
-                //     if(data.code == 200){
-                //         $.messager.alert("温馨提示", "注册成功")
-                //         window.location.href="/login.html";
-                //     }else{
-                //         $.messager.alert("温馨提示", data.msg)
-                //     }
-                // })
+
 
             })
 
@@ -60,32 +81,32 @@
 </head>
 <body>
 <div class="container cm-container">
-    <h3 class="text-center"><font style="color: #337ab7;">四季有你管理系统注册</font></h3>
+    <h3 class="text-center"><font style="color: #337ab7;">四季有你商家系统注册</font></h3>
     <hr />
     <div class="login">
         <form id="loginForm" action="" method="post">
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">用户名</div>
-                    <input class="form-control" name="name"  value=""/>
+                    <input class="form-control" name="name"  value="" id="name"/>
                 </div>
             </div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">密&emsp;码</div>
-                    <input class="form-control" name="pass" type="password" value=""/>
+                    <input class="form-control" name="pass" type="password" value="" id="pass"/>
                 </div>
             </div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">手机号码</div>
-                    <input class="form-control" name="phone"  type="tel" value="" id="file1"/>
+                    <input class="form-control" name="phone"  type="tel" value="" id="phone"/>
                 </div>
             </div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">法人</div>
-                    <input class="form-control" name="faren"  value=""/>
+                    <input class="form-control" name="faren"  value="" id="faren"/>
                 </div>
             </div>
             <div class="form-group form-group-lg">

@@ -36,6 +36,7 @@ public class AdminController {
     @Autowired
     RegionService regionService;
 
+    // AdminService adminService = new AdminService();
     @Autowired
     AdminService adminService;
 
@@ -62,7 +63,7 @@ public class AdminController {
 
 
     @PassLogin
-    @ApiOperation(value = "查询所有目的地")
+    @ApiOperation(value = "注册")
     @PostMapping("register")
     @ResponseBody
     public JsonResult register(AdminRegisterVo registerVo){
