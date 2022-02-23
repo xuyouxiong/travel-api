@@ -40,11 +40,11 @@
 
     <li class="list-group-item">
         <a href="#" data-toggle="collapse" data-target="#strategyMgr">
-            <span>攻略管理</span>
+            <span>内容管理</span>
         </a>
         <ul class="in" id="strategyMgr">
-            <li class="strategyTheme"><a href="/strategyTheme/list">攻略主题管理</a></li>
-            <li class="strategyCatalog"><a href="/strategyCatalog/list">攻略分类管理</a></li>
+            <li class="strategyTheme"><a href="/strategyTheme/list">攻略管理</a></li>
+            <li class="strategyCatalog"><a href="/strategyCatalog/list">攻略管理</a></li>
             <li class="strategy"><a href="/strategy/list">攻略明细管理</a></li>
         </ul>
     </li>

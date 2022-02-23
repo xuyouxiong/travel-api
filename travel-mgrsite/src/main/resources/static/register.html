@@ -26,41 +26,76 @@
     <script type="text/javascript">
         $(function(){
             $("#btn_submit").click(function () {
-                $.post("/login", $("#loginForm").serialize(), function (data) {
-                    console.log(data);
-                    if(data.success){
-                        window.location.href="/main";
-                    }else{
-                        $.messager.alert("温馨提示", data.msg)
+                console.log($('#files1')[0].files[0])
+                var formData = new FormData();
+                formData.append("file", $('#files1')[0].files[0])
+                $.ajax({
+                    url:'/common/uploadFile', /*接口域名地址*/
+                    type:'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success:function(res){
+                        console.log(res);
                     }
                 })
+                // $.post("/admin/register", $("#loginForm").serialize(), function (data) {
+                //     console.log(data);
+                //     if(data.code == 200){
+                //         $.messager.alert("温馨提示", "注册成功")
+                //         window.location.href="/login.html";
+                //     }else{
+                //         $.messager.alert("温馨提示", data.msg)
+                //     }
+                // })
 
             })
+
+
         });
+
     </script>
     <script src="js/plugins/messager/jquery.bootstrap.min.js"></script>
 
 </head>
 <body>
 <div class="container cm-container">
-    <h3 class="text-center"><font style="color: #337ab7;">四季有你管理系统</font></h3>
+    <h3 class="text-center"><font style="color: #337ab7;">四季有你管理系统注册</font></h3>
     <hr />
     <div class="login">
         <form id="loginForm" action="" method="post">
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">用户名</div>
-                    <input class="form-control" name="username"  value="admin"/>
+                    <input class="form-control" name="name"  value=""/>
                 </div>
             </div>
             <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">密&emsp;码</div>
-                    <input class="form-control" name="password" type="password" value="1"/>
+                    <input class="form-control" name="pass" type="password" value=""/>
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <div class="input-group">
+                    <div class="input-group-addon">手机号码</div>
+                    <input class="form-control" name="phone"  type="tel" value="" id="file1"/>
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <div class="input-group">
+                    <div class="input-group-addon">法人</div>
+                    <input class="form-control" name="faren"  value=""/>
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <div class="input-group">
+                    <div class="input-group-addon">认证证书</div>
+                    <input type="file" name="cert"  value="" id="files1"/>
                 </div>
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit">登录</button>
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit">注册</button>
             </div>
         </form>
     </div>

@@ -1,5 +1,6 @@
 package cn.linstudy.travel.controller;
 
+import cn.linstudy.travel.annotation.PassLogin;
 import cn.linstudy.travel.constant.SystemConstant;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.exception.LogicException;
@@ -10,6 +11,7 @@ import cn.linstudy.travel.redis.RedisKeyEnum;
 import cn.linstudy.travel.service.*;
 import cn.linstudy.travel.utils.JwtUtil;
 import cn.linstudy.travel.vo.AdminInfoVo;
+import cn.linstudy.travel.vo.AdminRegisterVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,6 +50,8 @@ public class AdminController {
         return "admin/list";
     }
 
+
+    @PassLogin
     @ApiOperation(value = "查询所有目的地")
     @PostMapping("login")
     @ResponseBody
@@ -55,4 +59,20 @@ public class AdminController {
         JsonResult result = adminService.login(adminInfoVo);
         return result;
     }
+
+
+    @PassLogin
+    @ApiOperation(value = "查询所有目的地")
+    @PostMapping("register")
+    @ResponseBody
+    public JsonResult register(AdminRegisterVo registerVo){
+        boolean isExist = adminService.checkName(registerVo.getName());
+        if (!isExist) {
+            return new JsonResult(402, "该用户名已经被注册");
+        }
+        adminService.register(registerVo);
+        return new JsonResult(200, "注册成功");
+    }
+
+
 }
