@@ -30,7 +30,7 @@
                 var formData = new FormData();
                 formData.append("file", $('#files1')[0].files[0])
                 $.ajax({
-                    url:'/common/uploadFile', /*接口域名地址*/
+                    url:'/common/uploadFile', /*接口域名地址*/// 上传文件的接口
                     type:'post',
                     data: formData,
                     contentType: false,
