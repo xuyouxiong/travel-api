@@ -18,6 +18,7 @@ bin-release/
 # information for Eclipse / Flash Builder.
 .gradle/*
 .idea/*
+travel-website/*
 travel-mgrsite/target/*
 travel-core/target/*
 travel-website-api/target/*
