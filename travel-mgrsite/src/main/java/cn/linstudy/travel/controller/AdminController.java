@@ -19,11 +19,12 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,4 +78,75 @@ public class AdminController {
     }
 
 
+    @ApiOperation(value = "下载证书")
+    @GetMapping("downloadCert")
+    @ResponseBody
+    public JsonResult downloadCert(Integer id,HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
+        System.out.println(id);
+        download(request, response);
+        return new JsonResult(200,  "下载成功");
+    }
+
+    public static void downloadLocal(HttpServletResponse response) throws FileNotFoundException {
+        // 下载本地文件
+        String fileName = "222.jpg".toString(); // 文件的默认保存名
+        // 读到流中
+        InputStream inStream = new FileInputStream("/Users/sunmaoyun/Downloads/1111.jpg");// 文件的存放路径
+        // 设置输出的格式
+        response.reset();
+        response.setContentType("bin");
+        response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+        // 循环取出流中的数据
+        byte[] b = new byte[100];
+        int len;
+        try {
+            while ((len = inStream.read(b)) > 0) {
+                response.getOutputStream().write(b, 0, len);
+            }
+            inStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static void download( HttpServletRequest request, HttpServletResponse response) {
+        //前端页面将自己需要的文件名字拿过来。这个名字直接拼接到文件所在服务器的相对路径。这里为便于测试。我直接把名字写死，以后使用的时候
+        //根据实际业务进行修改。
+        try {
+            //mac系统，所以路径是这样子的。win系统就是D盘什么什么的
+            String path = "/Users/sunmaoyun/Downloads/1111.jpg";
+            //这里是下载以后的文件叫做什么名字。我这里是以时间来定义名字的。
+            downCfg(System.currentTimeMillis()+".jpg", request, response);
+            OutputStream out;
+            FileInputStream inputStream = new FileInputStream(path);
+            out = response.getOutputStream();
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = inputStream.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+            }
+            inputStream.close();
+            out.close();
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void downCfg(String fileName, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        // 判断浏览器，进行不同的加密，这样下载的时候保存的文件名就不会乱码
+        String userAgent = request.getHeader("User-Agent");
+        // 针对IE或者以IE为内核的浏览器：
+        if (userAgent.contains("MSIE") || userAgent.contains("Trident")) {
+            fileName = URLEncoder.encode(fileName, "UTF-8");
+        } else {
+            // 非IE浏览器的处理：
+            fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+        }
+        response.setHeader("Content-disposition", String.format("attachment; filename=\"%s\"", fileName));
+        response.setContentType("application/octet-stream;charset=utf-8");
+        response.setCharacterEncoding("UTF-8");
+    }
 }

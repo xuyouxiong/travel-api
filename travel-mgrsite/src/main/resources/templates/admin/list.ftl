@@ -73,6 +73,10 @@
                 })
             })
 
+            $(".downloadBtn").click(function () {
+                var url = $(this).data("url");
+                location.href = url
+            })
         })
     </script>
 </head>
@@ -141,8 +145,9 @@
                                data-json='${entity.jsonString!}'>
                                 <span class="glyphicon glyphicon-edit"></span> 编辑
                             </a>
-                            <a class="btn btn-info btn-xs inputBtn" href="javascript:;"
-                               data-json='${entity.jsonString!}'>
+                            <a class="btn btn-info btn-xs downloadBtn" href="javascript:;"
+                               data-url="/admin/downloadCert?id=${entity.id}"
+                            >
                                 <span class="glyphicon glyphicon-download"></span> 下载证书
                             </a>
 

@@ -28,15 +28,12 @@ public class CommonController {
         try {
             String originName = file.getOriginalFilename();
             String name = createImageName();
-            String path = "d:/website_travel/travel-api/travel-mgrsite/target/classes/static/images/";
+//            String path = "d:/website_travel/travel-api/travel-mgrsite/target/classes/static/images/";
+            String path = "/Users/sunmaoyun/duncan/bishe/xuhaining/spring-boot_-travel/travel-mgrsite/target/classes/static/";
             uploadFile(file.getBytes(), path, name + originName.substring(originName.lastIndexOf("."), originName.length()));
             // 存储的目录
-            System.out.println("-----------> 获取到file文件 <-----------");
-            System.out.println(file.getOriginalFilename());
             return new JsonResult(200, "/images/" + name + originName.substring(originName.lastIndexOf("."), originName.length()) );
         }catch (Exception e) {
-            System.out.println("-----------> 获取到file文件 <-----------");
-            System.out.println("上传文件出错");
             return new JsonResult(500, "上传文件出错");
         }
     }
