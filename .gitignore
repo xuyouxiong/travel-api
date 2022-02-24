@@ -17,7 +17,7 @@ bin-release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 .gradle/*
-.idea/*
+.idea/
 travel-mgrsite/target/**
 travel-core/target/**
 travel-mgrsite/src/main/resources/application.yml
