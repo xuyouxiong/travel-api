@@ -135,7 +135,19 @@
                             <input type="number" class="form-control" id="low_price" name="low_price" value="" placeholder="请输入最低价格">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">营业开始时间：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="startDate" name="startDate" value='' placeholder="开始时间">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">营业结束时间：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="endDate" name="endDate" value='' placeholder="结束时间">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">介绍：</label>
                         <div class="col-sm-8">
