@@ -2,6 +2,7 @@ package cn.linstudy.travel.controller;
 
 import cn.linstudy.travel.annotation.PassLogin;
 import cn.linstudy.travel.constant.SystemConstant;
+import cn.linstudy.travel.domain.Admin;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.exception.LogicException;
 import cn.linstudy.travel.qo.AdminQueryObject;
@@ -14,8 +15,10 @@ import cn.linstudy.travel.utils.JwtUtil;
 import cn.linstudy.travel.vo.AdminInfoVo;
 import cn.linstudy.travel.vo.AdminRegisterVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import io.netty.util.internal.StringUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,47 +80,48 @@ public class AdminController {
         return new JsonResult(200, "注册成功");
     }
 
+    @ApiOperation(value = "审核")
+    @GetMapping("check")
+    @ResponseBody
+    public JsonResult check(Long id, Integer status) {
+        if (id == 1) {
+            return new JsonResult(402,  "不能操作这个账户");
+        }
+        Admin admin = adminService.getById(id);
+        admin.setStatus(status);
+        adminService.saveOrUpdate(admin);
+        return new JsonResult(200,  "操作成功");
+    }
 
     @ApiOperation(value = "下载证书")
     @GetMapping("downloadCert")
     @ResponseBody
     public JsonResult downloadCert(Integer id,HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
         System.out.println(id);
-        download(request, response);
+        Admin admin = adminService.getById(id);
+        System.out.println(admin.getName());
+        if (StringUtil.isNullOrEmpty(admin.getCert())) {
+            System.out.println("进入2");
+            return new JsonResult(402,  "未上传证书");
+        }
+        if (admin.getCert().equals("")) {
+            System.out.println("进入1");
+            return new JsonResult(402,  "未上传证书");
+        }
+        String filename = admin.getCert();
+
+        download(request, response, filename);
         return new JsonResult(200,  "下载成功");
     }
 
-    public static void downloadLocal(HttpServletResponse response) throws FileNotFoundException {
-        // 下载本地文件
-        String fileName = "222.jpg".toString(); // 文件的默认保存名
-        // 读到流中
-        InputStream inStream = new FileInputStream("/Users/sunmaoyun/Downloads/1111.jpg");// 文件的存放路径
-        // 设置输出的格式
-        response.reset();
-        response.setContentType("bin");
-        response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-        // 循环取出流中的数据
-        byte[] b = new byte[100];
-        int len;
-        try {
-            while ((len = inStream.read(b)) > 0) {
-                response.getOutputStream().write(b, 0, len);
-            }
-            inStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private static void download( HttpServletRequest request, HttpServletResponse response) {
+    private static void download( HttpServletRequest request, HttpServletResponse response, String path_upload) {
         //前端页面将自己需要的文件名字拿过来。这个名字直接拼接到文件所在服务器的相对路径。这里为便于测试。我直接把名字写死，以后使用的时候
         //根据实际业务进行修改。
         try {
             //mac系统，所以路径是这样子的。win系统就是D盘什么什么的
-            String path = "/Users/sunmaoyun/Downloads/1111.jpg";
+            String path = "/Users/sunmaoyun/duncan/bishe/xuhaining/spring-boot_-travel/travel-mgrsite/target/classes/static" + path_upload;
             //这里是下载以后的文件叫做什么名字。我这里是以时间来定义名字的。
-            downCfg(System.currentTimeMillis()+".jpg", request, response);
+            downCfg(System.currentTimeMillis()+ path_upload.substring(path_upload.lastIndexOf("."), path_upload.length()), request, response);
             OutputStream out;
             FileInputStream inputStream = new FileInputStream(path);
             out = response.getOutputStream();
@@ -149,4 +153,7 @@ public class AdminController {
         response.setContentType("application/octet-stream;charset=utf-8");
         response.setCharacterEncoding("UTF-8");
     }
+
+
+
 }

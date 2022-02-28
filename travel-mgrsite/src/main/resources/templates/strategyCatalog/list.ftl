@@ -24,7 +24,6 @@
                 $('#dest').selectpicker('refresh'); //刷新组件
                 //弹出模态框
                 $("#editModal").modal("show");
-
             })
             
             $(".submitBtn").click(function () {

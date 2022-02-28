@@ -2,9 +2,11 @@ package cn.linstudy.travel.service.impl;
 
 
 import cn.linstudy.travel.constant.SystemConstant;
+import cn.linstudy.travel.domain.Travel;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.exception.LogicException;
 import cn.linstudy.travel.mapper.UserInfoMapper;
+import cn.linstudy.travel.qo.UserInfoQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.redis.RedisKeyEnum;
 import cn.linstudy.travel.redis.service.UserInfoRedisService;
@@ -20,6 +22,7 @@ import com.aliyuncs.exceptions.ClientException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -183,6 +186,15 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
   @Override
   public List<UserInfo> queryByDestName(String name) {
     return super.list(new QueryWrapper<UserInfo>().eq("city",name));
+  }
+
+  @Override
+  public Page<UserInfo> listForPage(UserInfoQueryObject qo) {
+    Page page = new Page(qo.getCurrentPage(),qo.getPageSize());
+    QueryWrapper queryWrapper = new QueryWrapper();
+    queryWrapper.eq("state", qo.getState());
+    List<UserInfo> userInfos = super.page(page,queryWrapper).getRecords();
+    return super.page(page);
   }
 }
 

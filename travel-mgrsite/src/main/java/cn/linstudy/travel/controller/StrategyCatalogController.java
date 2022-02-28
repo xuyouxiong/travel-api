@@ -1,5 +1,6 @@
 package cn.linstudy.travel.controller;
 
+import cn.linstudy.travel.domain.Destination;
 import cn.linstudy.travel.domain.StrategyCatalog;
 import cn.linstudy.travel.qo.StrategyCatalogQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
@@ -49,8 +50,12 @@ public class StrategyCatalogController {
   @ResponseBody
   public JsonResult saveOrUpdate(Long id, StrategyCatalog strategyCatalog){
     if (id == null ){
+      Destination destination = destinationService.getById(strategyCatalog.getDestId());
+      strategyCatalog.setDestName(destination.getName());
       strategyCatalogService.save(strategyCatalog);
     }else {
+      Destination destination = destinationService.getById(strategyCatalog.getDestId());
+      strategyCatalog.setDestName(destination.getName());
       strategyCatalogService.updateById(strategyCatalog);
     }
     return JsonResult.success();

@@ -34,6 +34,8 @@ public class Travel extends BaseDomain implements Serializable {
 
     public static final int STATE_REJECT = 3;  //拒绝
 
+    public static final int STATE_DOWN = -1;  //下架
+
     public static final int ISPUBLIC_NO = 0;
 
     public static final int ISPUBLIC_YES = 1;
@@ -106,8 +108,9 @@ public class Travel extends BaseDomain implements Serializable {
 
             return "已拒绝";
 
+        } else if (state == STATE_DOWN) {
+            return "下架";
         }
-
         return "";
 
     }

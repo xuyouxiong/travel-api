@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Insert;
  */
 public interface UserInfoMapper extends BaseMapper<UserInfo> {// 继承MyBatis-Plus的通用Mapper，泛型是实体类
 
-  @Insert("insert into userinfo( nickname, phone, password) values (#{nickname},#{phone},#{password})")
+  @Insert("insert into userinfo( nickname, phone, password, state) values (#{nickname},#{phone},#{password}, 0)")
   void insert(UserInfoRegisterVO userInfoRegisterVO);
 
 }

@@ -1,11 +1,16 @@
 package cn.linstudy.travel.domain;
 import cn.linstudy.travel.constant.SystemConstant;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Description 用户信息实体类
  * 
@@ -51,5 +56,29 @@ public class UserInfo extends BaseDomain{
     public UserInfo(String phone, String password) {
         this.phone = phone;
         this.password = password;
+    }
+
+    public String getJsonString(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("id",id);
+        map.put("nickname",nickname);
+        map.put("state",state);
+        map.put("city",city);
+        map.put("headImgUrl", headImgUrl);
+        map.put("phone", phone);
+        return JSON.toJSONString(map);
+    }
+
+    public String getStateDisplay(){
+
+        if (state == 0 ){
+
+            return "正常";
+
+        } else if (state == -1) {
+            return "禁用";
+        }
+        return "";
+
     }
 }

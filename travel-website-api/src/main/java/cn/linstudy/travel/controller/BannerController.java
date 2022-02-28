@@ -35,6 +35,7 @@ public class BannerController {
     return JsonResult.success(travelService.list(null));
   }
 
+  @PassLogin
   @GetMapping("strategy")
   public JsonResult getStrategy(){
     return JsonResult.success(strategyService.list(null));

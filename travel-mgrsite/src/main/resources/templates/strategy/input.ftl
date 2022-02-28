@@ -21,9 +21,9 @@
             //图片上传
             $('.imgBtn').uploadifive({
                 'auto' : true,  //自动发起图片上传请求
-                'uploadScript' : '/uploadImg',   //处理上传文件的请求路径
+                'uploadScript' : '/common/uploadFile',   //处理上传文件的请求路径
                 buttonClass:"btn-link",
-                'fileObjName' : 'pic',   //上传文件参数名
+                'fileObjName' : 'file',   //上传文件参数名
                 'buttonText' : '浏览...',
                 'fileType' : 'image',
                 'multi' : false,
@@ -33,8 +33,8 @@
                 //'queueSizeLimit'  : 10,
                 'overrideEvents': ['onDialogClose', 'onError'],    //onDialogClose 取消自带的错误提示
                 'onUploadComplete' : function(file, data) {
-                    $("#imgUrl").attr("src" ,data);  //data约定是json格式 图片地址
-                    $("#coverUrl").val(data);
+                    $("#imgUrl").attr("src" ,(JSON.parse(data)).msg);  //data约定是json格式 图片地址
+                    $("#coverUrl").val((JSON.parse(data)).msg);
 
                 },
                 onFallback : function() {

@@ -1,10 +1,14 @@
 package cn.linstudy.travel.service;
 
+import cn.linstudy.travel.domain.Travel;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.mapper.UserInfoMapper;
+import cn.linstudy.travel.qo.TravelQueryObject;
+import cn.linstudy.travel.qo.UserInfoQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.vo.UserInfoLoginVO;
 import cn.linstudy.travel.vo.UserInfoRegisterVO;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 
@@ -64,4 +68,13 @@ public interface UserInfoService extends IService<UserInfo> {
   boolean favor(Long sid, Long userId);
 
   List<UserInfo> queryByDestName(String name);
+
+  /**
+   * @Description: 分页查询
+   *
+   * @date 2021/4/17
+   * @Param: [qo]
+   * @return com.baomidou.mybatisplus.extension.plugins.pagination.Page<cn.linstudy.travel.domain.Travel>
+   */
+  Page<UserInfo> listForPage(UserInfoQueryObject qo);
 }

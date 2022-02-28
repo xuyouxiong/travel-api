@@ -40,32 +40,19 @@
     <#include "../common/top.ftl">
     <div class="row">
         <div class="col-sm-2">
-            <#assign currentMenu="travel"/>
+            <#assign currentMenu="order"/>
             <#include "../common/menu.ftl">
         </div>
         <div class="col-sm-10">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="page-head-line">游记管理</h1>
+                    <h1 class="page-head-line">订单管理</h1>
                 </div>
             </div>
 
-            <!--高级查询--->
-            <form class="form-inline" id="searchForm" action="/travel/list" method="get">
+            <form class="form-inline" id="searchForm" action="/strategy/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
-                <div class="form-group">
-                   <select id="stateSelect" name="state" class="form-control">
-                       <option value="-1" selected>全部</option>
-                       <option value="1">待审核</option>
-                       <option value="3">已拒绝</option>
-                   </select>
-                   <script>
-                       $("#stateSelect").val(${(qo.state)!})
-                   </script>
-                </div>
-                <button id="btn_query" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span> 查询
-                </button>
+                <a href="/strategy/input" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  添加</a>
             </form>
 
             <table class="table table-striped table-hover">

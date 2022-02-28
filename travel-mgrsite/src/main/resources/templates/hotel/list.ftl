@@ -40,42 +40,31 @@
     <#include "../common/top.ftl">
     <div class="row">
         <div class="col-sm-2">
-            <#assign currentMenu="travel"/>
+            <#assign currentMenu="hotel"/>
             <#include "../common/menu.ftl">
         </div>
         <div class="col-sm-10">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="page-head-line">游记管理</h1>
+                    <h1 class="page-head-line">酒店管理</h1>
                 </div>
             </div>
 
             <!--高级查询--->
-            <form class="form-inline" id="searchForm" action="/travel/list" method="get">
+            <form class="form-inline" id="searchForm" action="/strategy/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
-                <div class="form-group">
-                   <select id="stateSelect" name="state" class="form-control">
-                       <option value="-1" selected>全部</option>
-                       <option value="1">待审核</option>
-                       <option value="3">已拒绝</option>
-                   </select>
-                   <script>
-                       $("#stateSelect").val(${(qo.state)!})
-                   </script>
-                </div>
-                <button id="btn_query" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span> 查询
-                </button>
+                <a href="/hotel/input" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  添加</a>
             </form>
 
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>标题</th>
+                    <th>酒店名称</th>
                     <th>封面</th>
                     <th>地点</th>
-                    <th>作者</th>
+                    <th>创建者</th>
+                    <th>时间</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
@@ -83,32 +72,23 @@
                 <#list page.records as entity>
                     <tr>
                         <td>${entity_index+1}</td>
-						<td>${entity.title!}</td>
-						<td><img src="${entity.coverUrl!}" width="50px"/></td>
-						<td>${(entity.destName)!}</td>
-						<td>${(entity.author.nickname)!}</td>
-						<td>${entity.stateDisplay}</td>
-
+						<td>${entity.name!}</td>
+						<td><img src="${entity.image!}" width="50px"/></td>
+						<td>${(entity.address)!}</td>
+						<td>${(entity.username)!}</td>
+                        <td>${entity.startDate} ~ ${entity.endDate}</td>
+						<td>正常</td>
                         <td>
-                            <#if entity.state == 1>
-                            <a class="btn btn-default btn-xs auditBtn" href="JavaScript:;"
-                               data-id="${entity.id}" data-state="2">
-                            <span class="glyphicon glyphicon-tag"></span> 审核通过
-                        </a>
-                            |
-                           <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"
-                              data-id="${entity.id}" data-state="3" >
-                               <span class="glyphicon glyphicon-minus-sign"></span> 审核拒绝
-                           </a>
-                            |
-                            </#if>
-                            <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"
-                               data-id="${entity.id}" data-state="-1" >
-                                <span class="glyphicon glyphicon-minus-sign"></span> 下架
+                            <a class="btn btn-info btn-xs inputBtn" href="/room/list?id=${entity.id}">
+                                <span class="glyphicon glyphicon-edit"></span> 房间管理
                             </a>
-                            |
-                            <a class="btn btn-info btn-xs lookBtn" href="JavaScript:;" data-id="${entity.id}">
-                                <span class="glyphicon glyphicon-th"></span> 查看</a>
+                            <a class="btn btn-info btn-xs inputBtn" href="/hotel/edit?id=${entity.id}">
+                                <span class="glyphicon glyphicon-edit"></span> 编辑
+                            </a>
+                            <a href="javascript:;" class="btn btn-danger btn-xs deleteBtn"
+                               data-url="/hotel/delete?id=${entity.id}">
+                                <span class="glyphicon glyphicon-trash"></span> 删除
+                            </a>
                         </td>
                     </tr>
                 </#list>

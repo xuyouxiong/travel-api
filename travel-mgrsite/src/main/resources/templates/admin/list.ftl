@@ -25,20 +25,32 @@
             //编辑/添加
             $(".inputBtn").click(function () {
                 //弹出模态框
-                $("#editModal").modal("show");
+                var id = $(this).data('index')
+                var status = $(this).data('status')
 
-                $("#treeview").html("");
-                //数据复原
-                $("#editForm").clearForm(true);
-
-                //目的地回显数据
-                var data = $(this).data("json");
-                if (data) {
-                    $("input[name='id']").val(data.id);
-
-                    $("textarea[name='info']").val(data.info);
-
-                }
+                $.ajax({
+                    type: 'GET',
+                    url: '/admin/check',
+                    dataType: 'json',
+                    data: {
+                        'id': id,
+                        'status': status
+                    },
+                    beforeSend:function(xhr){
+                        xhr.setRequestHeader("admin_token",token);
+                    },
+                    success:function (data) {
+                        console.log(data)
+                        if(data.code == 200) {
+                            location.reload()
+                        } else {
+                            $.messager.alert("温馨提示", data.msg)
+                        }
+                    },
+                    error:function () {
+                        popup("网络不通，请联系管理员~");
+                    }
+                })
             })
 
             $(".submitBtn").click(function () {
@@ -76,6 +88,15 @@
             $(".downloadBtn").click(function () {
                 var url = $(this).data("url");
                 location.href = url
+
+                // $.get(url, function (data) {
+                //     console.log(data)
+                //     if (data.code != 200) {
+                //         $.messager.alert("温馨提示", data.msg);
+                //     } else {
+                //         location.href = url
+                //     }
+                // })
             })
         })
     </script>
@@ -101,16 +122,6 @@
             <form class="form-inline" id="searchForm" action="/destination/list" method="post">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
                 <input type="hidden" name="parentId" id="parentId" value="${qo.parentId!}">
-                <div class="form-group">
-                    <label for="keyword">关键字:</label>
-                    <input type="text" class="form-control" id="keyword" name="keyword"
-                           value="${(qo.keyword)!''}" placeholder="请输入名称">
-                </div>
-
-                <button type="button" class="btn btn-primary clickBtn" data-parentid="${qo.parentId!}"><span
-                            class="glyphicon glyphicon-search"></span> 查询
-                </button>
-
                 <h4>
                     当前位置: <a href="javascript:;" data-parentid="" class="clickBtn">用户管理</a>
                 </h4>
@@ -142,8 +153,8 @@
 
                         <td>
                             <a class="btn btn-info btn-xs inputBtn" href="javascript:;"
-                               data-json='${entity.jsonString!}'>
-                                <span class="glyphicon glyphicon-edit"></span> 编辑
+                               data-index='${entity.id}' data-status="1">
+                                <span class="glyphicon glyphicon-edit"></span> 审核通过
                             </a>
                             <a class="btn btn-info btn-xs downloadBtn" href="javascript:;"
                                data-url="/admin/downloadCert?id=${entity.id}"
@@ -152,9 +163,9 @@
                             </a>
 
 
-                            <a href="javascript:;" class="btn btn-danger btn-xs deleteBtn"
-                               data-url="/destination/delete?id=${entity.id}">
-                                <span class="glyphicon glyphicon-trash"></span> 删除
+                            <a href="javascript:;" class="btn btn-danger btn-xs inputBtn"
+                               data-index='${entity.id}' data-status="-1">
+                                <span class="glyphicon glyphicon-trash"></span> 审核不通过
                             </a>
                         </td>
                     </tr>

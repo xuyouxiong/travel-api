@@ -47,6 +47,14 @@ public class StrategyController {
     return "strategy/list";
   }
 
+  @ApiOperation(value = "删除攻略")
+  @GetMapping("delete")
+  @ResponseBody
+  public JsonResult delete(Long id){
+    strategyService.removeById(id);
+    return JsonResult.success();
+  }
+
   @GetMapping("changeState")
   @ApiOperation(value = "修改状态")
   @ResponseBody

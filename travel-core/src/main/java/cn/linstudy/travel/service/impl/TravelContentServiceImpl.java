@@ -73,6 +73,15 @@ public class TravelContentServiceImpl extends ServiceImpl<TravelContentMapper, T
       travel.setReleaseTime(new Date());
        //记录审核信息（审核人、审核时间、审核状态、审核备注，审核i信息的id）
       travelService.updateById(travel);
+    } else if (state == -1) {
+      Travel travel = travelService.getById(id);
+      travelService.updateById(travel.setState(-1));
+      //设置发布时间。
+      travel.setReleaseTime(new Date());
+      //最后更新时间。
+      travel.setReleaseTime(new Date());
+      //记录审核信息（审核人、审核时间、审核状态、审核备注，审核i信息的id）
+      travelService.updateById(travel);
     }
       return JsonResult.success();
   }
