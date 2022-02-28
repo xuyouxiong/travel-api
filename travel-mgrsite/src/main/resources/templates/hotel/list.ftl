@@ -53,7 +53,7 @@
             <!--高级查询--->
             <form class="form-inline" id="searchForm" action="/strategy/list" method="get">
                 <input type="hidden" name="currentPage" id="currentPage" value="1">
-                <a href="/hotel/input" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  添加</a>
+                <a href='/hotel/input?uid=${uid}' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  添加</a>
             </form>
 
             <table class="table table-striped table-hover">

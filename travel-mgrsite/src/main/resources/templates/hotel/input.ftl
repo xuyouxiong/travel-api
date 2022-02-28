@@ -72,7 +72,7 @@
                     success:function (data) {
                         console.log(data);
                         if(data.code == 200){
-                            window.location.href = "/hotel/list";
+                            window.location.href = "/hotel/list?uid=" + user.id;
                         }else{
                             $.messager.alert("温馨提示", data.msg);
                         }

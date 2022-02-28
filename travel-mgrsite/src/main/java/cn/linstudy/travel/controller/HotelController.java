@@ -41,6 +41,7 @@ public class HotelController {
     @ApiOperation(value = "高级查询所有")
     @GetMapping("list")
     public String listForPage(@ModelAttribute("qo") HotelQueryObject qo, Model model,Long uid){
+        model.addAttribute("uid", uid);
         model.addAttribute("page",hotelService.listForPage(qo, uid));
         return "hotel/list";
     }
