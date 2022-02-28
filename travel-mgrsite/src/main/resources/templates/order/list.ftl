@@ -67,38 +67,38 @@
                     <th>操作</th>
                 </tr>
                 </thead>
-                <#list page.records as entity>
-                    <tr>
-                        <td>${entity_index+1}</td>
-						<td>${entity.title!}</td>
-						<td><img src="${entity.coverUrl!}" width="50px"/></td>
-						<td>${(entity.destName)!}</td>
-						<td>${(entity.author.nickname)!}</td>
-						<td>${entity.stateDisplay}</td>
+<#--                <#list page.records as entity>-->
+<#--                    <tr>-->
+<#--                        <td>${entity_index+1}</td>-->
+<#--						<td>${entity.title!}</td>-->
+<#--						<td><img src="${entity.coverUrl!}" width="50px"/></td>-->
+<#--						<td>${(entity.destName)!}</td>-->
+<#--						<td>${(entity.author.nickname)!}</td>-->
+<#--						<td>${entity.stateDisplay}</td>-->
 
-                        <td>
-                            <#if entity.state == 1>
-                            <a class="btn btn-default btn-xs auditBtn" href="JavaScript:;"
-                               data-id="${entity.id}" data-state="2">
-                            <span class="glyphicon glyphicon-tag"></span> 审核通过
-                        </a>
-                            |
-                           <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"
-                              data-id="${entity.id}" data-state="3" >
-                               <span class="glyphicon glyphicon-minus-sign"></span> 审核拒绝
-                           </a>
-                            |
-                            </#if>
-                            <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"
-                               data-id="${entity.id}" data-state="-1" >
-                                <span class="glyphicon glyphicon-minus-sign"></span> 下架
-                            </a>
-                            |
-                            <a class="btn btn-info btn-xs lookBtn" href="JavaScript:;" data-id="${entity.id}">
-                                <span class="glyphicon glyphicon-th"></span> 查看</a>
-                        </td>
-                    </tr>
-                </#list>
+<#--                        <td>-->
+<#--                            <#if entity.state == 1>-->
+<#--                            <a class="btn btn-default btn-xs auditBtn" href="JavaScript:;"-->
+<#--                               data-id="${entity.id}" data-state="2">-->
+<#--                            <span class="glyphicon glyphicon-tag"></span> 审核通过-->
+<#--                        </a>-->
+<#--                            |-->
+<#--                           <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"-->
+<#--                              data-id="${entity.id}" data-state="3" >-->
+<#--                               <span class="glyphicon glyphicon-minus-sign"></span> 审核拒绝-->
+<#--                           </a>-->
+<#--                            |-->
+<#--                            </#if>-->
+<#--                            <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"-->
+<#--                               data-id="${entity.id}" data-state="-1" >-->
+<#--                                <span class="glyphicon glyphicon-minus-sign"></span> 下架-->
+<#--                            </a>-->
+<#--                            |-->
+<#--                            <a class="btn btn-info btn-xs lookBtn" href="JavaScript:;" data-id="${entity.id}">-->
+<#--                                <span class="glyphicon glyphicon-th"></span> 查看</a>-->
+<#--                        </td>-->
+<#--                    </tr>-->
+<#--                </#list>-->
             </table>
             <#include "../common/page.ftl"/>
         </div>
