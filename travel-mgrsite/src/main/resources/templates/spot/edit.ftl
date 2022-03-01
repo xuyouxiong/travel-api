@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>房间的新增</title>
+    <title>门票</title>
     <#include "../common/header.ftl"/>
 
     <link type="text/css" rel="stylesheet" href="/js/plugins/uploadifive/uploadifive.css" />
@@ -11,6 +11,10 @@
 
         //表单提交验证
         $(function () {
+            var ck = CKEDITOR.replace( 'content',{
+                filebrowserBrowseUrl: '/strategy/info',
+                filebrowserUploadUrl: '/uploadImg_ck'
+            });
             //图片上传
             $('.imgBtn').uploadifive({
                 'auto' : true,  //自动发起图片上传请求
@@ -47,21 +51,27 @@
 
                 var name = $("#name").val()
                 var image = $("#coverUrl").val()
-                var number = $("#number").val()
+                var address = $("#address").val()
                 var price = $("#price").val()
-                var size = $("#size").val()
-                var hotel_id = $("#hotel_id").val()
+                var summary = $("#summary").val()
+                console.log(summary)
+                var number = $("#number").val()
+                var id = $("#id").val()
+                console.log(typeof ck.getData())
                 $.ajax({
                     type: 'POST',
-                    url: '/room/saveOrUpdate',
+                    url: '/spot/saveOrUpdate',
                     dataType: 'json',
                     data: {
+                        id,
                         name,
                         image,
-                        number,
+                        address,
                         price,
-                        size,
-                        hotel_id
+                        summary,
+                        number,
+                        uid: user.id,
+                        introduction: ck.getData()
                     },
                     beforeSend:function(xhr){
                         xhr.setRequestHeader("admin_token",token);
@@ -69,7 +79,7 @@
                     success:function (data) {
                         console.log(data);
                         if(data.code == 200){
-                            window.location.href = "/room/list?id=" + hotel_id;
+                            window.location.href = "/spot/list?uid=" + user.id;
                         }else{
                             $.messager.alert("温馨提示", data.msg);
                         }
@@ -88,7 +98,7 @@
 </head>
 <body>
 <!--设置菜单回显-->
-<#assign currentMenu = 'hotel'>
+<#assign currentMenu = 'spot'>
 <div class="container-fluid " style="margin-top: 20px">
     <#include "../common/top.ftl"/>
     <div class="row">
@@ -98,47 +108,59 @@
         <div class="col-sm-10">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="page-head-line">房间新增</h1>
+                    <h1 class="page-head-line">门票新增</h1>
                 </div>
             </div>
             <div class="row col-sm-10">
                 <form class="form-horizontal" action="/hotel/saveOrUpdate" method="post" id="editForm">
-                    <input id="hotel_id" name="hotel_id" value="${hotel_id}" type="hidden">
+                    <input type="hidden"  class="form-control" id="id"  name="id" value="${spot.id!}" >
+                    <input type="hidden"  class="form-control" id="uid"  name="uid" value="${uid}" >
+
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">房间名称：</label>
+                        <label for="name" class="col-sm-2 control-label">景点名称：</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="name" name="name" value="" placeholder="请输入房间名称">
+                            <input type="text" class="form-control" id="name" name="name" value="${spot.name}" placeholder="请输入景点名称">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">房间封面：</label>
+                        <label for="name" class="col-sm-2 control-label">景点封面：</label>
                         <div class="col-sm-8">
-                            <input type="hidden"  class="form-control" id="coverUrl"  name="coverUrl" value="" >
-                            <img src="/images/default.jpg" width="100px" id="imgUrl" >
+                            <input type="hidden"  class="form-control" id="coverUrl"  name="coverUrl" value="${spot.image!}" >
+                            <img src="${spot.image!}" width="100px" id="imgUrl" >
                             <button type="button" class="imgBtn">浏览</button>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">房间数量：</label>
+                        <label for="name" class="col-sm-2 control-label">景点地址：</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="number" name="number" value="" placeholder="请输入房间数量">
+                            <input type="text" class="form-control" id="address" name="address" value='${spot.address!}' placeholder="请输入地址">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">价格：</label>
+                        <label for="name" class="col-sm-2 control-label">门票价格：</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="price" name="price" value="" placeholder="请输入价格">
+                            <input type="number" class="form-control" id="price" name="price" value='${spot.price!}' placeholder="请输入最低价格">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">门票数量：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="number" name="number" value='${spot.number!}' placeholder="请输入数量">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">规格：</label>
+                        <label for="name" class="col-sm-2 control-label">摘要：</label>
                         <div class="col-sm-8">
-                            <textarea  class="form-control" name="size" id="size"></textarea>
+                            <textarea  class="form-control" name="summary" id="summary">${spot.summary!}</textarea>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="content" name="content.content" class="ckeditor">${spot.introduction!}</textarea>
                     </div>
 
                     <div class="form-group">

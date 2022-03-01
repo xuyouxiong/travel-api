@@ -6,22 +6,11 @@
     <#include "../common/header.ftl" >
     <script>
         $(function(){
-            //查看文章
-           $(".lookBtn").click(function () {
-               var id = $(this).data('id');
-               //根据id查询游记内容
-               $.get('/travel/getContentById',{id:id},function (data) {
-                   console.log(data.data)
-                   $("#inputModal .modal-body").html(data.data.content);
-                   $("#inputModal").modal('show');
-               })
-           })
-
             //审核
-           $(".auditBtn").click(function () {
+           $(".auditBtn1").click(function () {
                var id = $(this).data('id');
                var state = $(this).data('state');
-               $.get('/travel/audit',{id:id,state:state},function (data) {
+               $.get('/order/audit',{id:id,state:state},function (data) {
                    console.log(data)
                    if(data.code == 200){
                        window.location.reload();
@@ -50,55 +39,47 @@
                 </div>
             </div>
 
-            <form class="form-inline" id="searchForm" action="/strategy/list" method="get">
-                <input type="hidden" name="currentPage" id="currentPage" value="1">
-                <a href="/strategy/input" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  添加</a>
-            </form>
-
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>标题</th>
-                    <th>封面</th>
-                    <th>地点</th>
-                    <th>作者</th>
+                    <th>订单号</th>
+                    <th>类型</th>
+                    <th>姓名</th>
+                    <th>联系方式</th>
+                    <th>身份证</th>
+                    <th>商品信息</th>
+                    <th>价格</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
-<#--                <#list page.records as entity>-->
-<#--                    <tr>-->
-<#--                        <td>${entity_index+1}</td>-->
-<#--						<td>${entity.title!}</td>-->
-<#--						<td><img src="${entity.coverUrl!}" width="50px"/></td>-->
-<#--						<td>${(entity.destName)!}</td>-->
-<#--						<td>${(entity.author.nickname)!}</td>-->
-<#--						<td>${entity.stateDisplay}</td>-->
-
-<#--                        <td>-->
-<#--                            <#if entity.state == 1>-->
-<#--                            <a class="btn btn-default btn-xs auditBtn" href="JavaScript:;"-->
-<#--                               data-id="${entity.id}" data-state="2">-->
-<#--                            <span class="glyphicon glyphicon-tag"></span> 审核通过-->
-<#--                        </a>-->
-<#--                            |-->
-<#--                           <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"-->
-<#--                              data-id="${entity.id}" data-state="3" >-->
-<#--                               <span class="glyphicon glyphicon-minus-sign"></span> 审核拒绝-->
-<#--                           </a>-->
-<#--                            |-->
-<#--                            </#if>-->
-<#--                            <a class="btn btn-danger btn-xs auditBtn" href="javascript:;"-->
-<#--                               data-id="${entity.id}" data-state="-1" >-->
-<#--                                <span class="glyphicon glyphicon-minus-sign"></span> 下架-->
-<#--                            </a>-->
-<#--                            |-->
-<#--                            <a class="btn btn-info btn-xs lookBtn" href="JavaScript:;" data-id="${entity.id}">-->
-<#--                                <span class="glyphicon glyphicon-th"></span> 查看</a>-->
-<#--                        </td>-->
-<#--                    </tr>-->
-<#--                </#list>-->
+                <#list page.records as entity>
+                    <tr>
+                        <td>${entity_index+1}</td>
+						<td>${entity.orderSn!}</td>
+						<td>${entity.type!}</td>
+						<td>${(entity.name)!}</td>
+						<td>${(entity.phone)!}</td>
+						<td>${entity.idCard!}</td>
+						<td>${entity.getOrderInfo()}</td>
+						<td>${entity.price!}</td>
+                        <td>${entity.getStatusName()}</td>
+                        <td>
+                            <#if entity.status == 1>
+                            <a class="btn btn-default btn-xs auditBtn1" href="JavaScript:;"
+                               data-id="${entity.id}" data-state="2">
+                            <span class="glyphicon glyphicon-tag"></span> 取消订单
+                            </#if>
+                            <#if entity.status == 2>
+                            <a class="btn btn-default btn-danger deleteBtn" href="JavaScript:;"
+                               data-id="${entity.id}" data-state="2">
+                                <span class="glyphicon glyphicon-tag"></span> 删除订单
+                            </a>
+                             </#if>
+                        </td>
+                    </tr>
+                </#list>
             </table>
             <#include "../common/page.ftl"/>
         </div>

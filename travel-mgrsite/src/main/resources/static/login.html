@@ -43,8 +43,11 @@ body{
 					// if (url.indexOf("register.html") > -1 || url.indexOf("login.html") > -1) {
 					// 	url = "/";
 					// }
-
-					url = "/hotel/list?uid=" + data.data.user.id;
+					if(data.data.user.id == 1) {
+						url = "/admin/list"
+					} else {
+						url = "/hotel/list?uid=" + data.data.user.id;
+					}
 					window.location.href=url;
 
 				}else{

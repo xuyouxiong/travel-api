@@ -16,6 +16,7 @@ $(function(){
             last:"尾页",
             initiateStartPageClick:false,
             onPageClick:function(event,page){
+                console.log(page)
             $("#currentPage").val(page);
             $("#searchForm").submit();
         }

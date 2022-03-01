@@ -49,6 +49,12 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/room/roomAdd")
                 .excludePathPatterns("/room/roomEdit")
                 .excludePathPatterns("/room/delete")
+                .excludePathPatterns("/ticket/list")
+                .excludePathPatterns("/order/audit")
+                .excludePathPatterns("/spot/list")
+                .excludePathPatterns("/spot/input")
+                .excludePathPatterns("/spot/edit")
+                .excludePathPatterns("/spot/delete")
                 ;
 
     }

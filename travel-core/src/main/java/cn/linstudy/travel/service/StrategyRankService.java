@@ -12,6 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @Date 2021/4/16 14:07
  */
 public interface StrategyRankService extends IService<StrategyRank> {
-
   JsonResult rank(Long type);
 }

@@ -20,7 +20,7 @@ public class QueryObject {
   @ApiModelProperty(value="当前页")
   private int currentPage = 1;
   @ApiModelProperty(value="每页显示条数")
-  private int pageSize = 5;
+  private int pageSize = 10;
 
   private String keyword;
 }
