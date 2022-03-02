@@ -59,6 +59,7 @@
             location.href = '/login.html'
         }
         var userJson = JSON.parse(user)
+        console.log(userJson)
         if (userJson.role != 1) {
             $(".is_admin").hide();
         } else {
