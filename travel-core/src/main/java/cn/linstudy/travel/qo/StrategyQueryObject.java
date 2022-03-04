@@ -31,4 +31,7 @@ public class StrategyQueryObject extends QueryObject{
 
   @ApiModelProperty(value="关联id")
   private Long refid;
+
+  @ApiModelProperty(value = "关键词")
+  private String keyword;
 }

@@ -55,6 +55,9 @@ public class TravelController {
   @GetMapping("query")
   @ResponseBody
   public JsonResult query(TravelConditionQueryObject qo,Long destId){
+    if (qo.getKeyword() == null) {
+      System.out.println("sdasjkhdkjashdjkashdjkas");
+    }
     return travelContentService.queryByDestId(qo,destId);
   }
 

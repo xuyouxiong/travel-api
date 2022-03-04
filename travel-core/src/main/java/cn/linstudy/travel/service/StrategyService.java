@@ -22,6 +22,9 @@ public interface StrategyService extends IService<Strategy> {
       */
   Page<Strategy> listForPage(StrategyQueryObject qo);
 
+
+  List<Strategy> getRecommend(StrategyQueryObject qo);
+
   /**
       * @Description: 修改攻略状态
       * 

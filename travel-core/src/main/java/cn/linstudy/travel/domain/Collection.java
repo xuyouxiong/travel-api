@@ -21,8 +21,12 @@ public class Collection extends BaseDomain{
   @ApiModelProperty(value="用户id")
   private Long userinfoId;
 
-  public Collection(Long strategyId, Long userinfoId) {
+  @ApiModelProperty(value="标签id")
+  private Long tagId;
+
+  public Collection(Long strategyId, Long userinfoId, Long tagId) {
     this.strategyId = strategyId;
     this.userinfoId = userinfoId;
+    this.tagId = tagId;
   }
 }

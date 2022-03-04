@@ -118,6 +118,11 @@ public class TravelContentServiceImpl extends ServiceImpl<TravelContentMapper, T
       }
     }
 
+    // 如果有关键词的模糊搜索
+    if (qo.getKeyword() != null && !(qo.getKeyword().equals(""))) {
+      queryWrapper.like("title", "%" + qo.getKeyword() + "%");
+    }
+
     Page<Travel> page = new Page<>(qo.getCurrentPage(),qo.getPageSize());
      travelService.page(page,queryWrapper);
     for (Travel travel : page.getRecords()) {

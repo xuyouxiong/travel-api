@@ -151,7 +151,8 @@ public class StrategyStatisticsRedisServiceImpl implements StrategyStatisticsRed
       collectionService.remove(new QueryWrapper<Collection>().eq("userinfo_id",sid).eq("strategy_id",strategyId));
     }else {
       strategyStatisticsVO.setFavorNum(strategyStatisticsVO.getFavorNum()+1);
-      collectionService.save(new Collection(strategyId,sid));
+      Strategy strategy = strategyService.getById(strategyId);
+      collectionService.save(new Collection(strategyId,sid, strategy.getThemeId()));
       favorIds.add(strategyId);
       strategyList.add(strategyId);
       redisTemplate.opsForValue().set(currentKey,JSON.toJSONString(strategyList));

@@ -23,5 +23,6 @@ public class TravelConditionQueryObject extends QueryObject{
 
   private Integer dayType;
 
+  private String keyword;
 
 }

@@ -2,23 +2,26 @@ package cn.linstudy.travel.controller;
 
 import cn.linstudy.travel.annotation.PassLogin;
 import cn.linstudy.travel.annotation.UserParam;
+import cn.linstudy.travel.domain.Strategy;
+import cn.linstudy.travel.domain.Tags;
 import cn.linstudy.travel.domain.UserInfo;
 import cn.linstudy.travel.mongo.domain.StrategyComment;
 import cn.linstudy.travel.mongo.service.StrategyCommentService;
 import cn.linstudy.travel.qo.StrategyCommentQueryObject;
 import cn.linstudy.travel.qo.StrategyQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
+import cn.linstudy.travel.qo.response.RecommendReponse;
 import cn.linstudy.travel.redis.service.StrategyStatisticsRedisService;
 import cn.linstudy.travel.redis.service.UserInfoRedisService;
-import cn.linstudy.travel.service.DestinationService;
-import cn.linstudy.travel.service.StrategyConditionService;
-import cn.linstudy.travel.service.StrategyService;
-import cn.linstudy.travel.service.StrategyThemeService;
+import cn.linstudy.travel.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.lang.reflect.InvocationTargetException;
 import java.net.http.HttpRequest;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.BeanUtils;
@@ -60,6 +63,9 @@ public class StrategyController {
   @Autowired
   StrategyStatisticsRedisService strategyStatisticsRedisService;
 
+  @Autowired
+  TagsService tagsService;
+
   @PassLogin
   @ApiOperation(value = "查询前三攻略")
   @GetMapping("viewnumTop3")
@@ -89,6 +95,7 @@ public class StrategyController {
   @GetMapping("query")
   @ResponseBody
   public JsonResult queryStrategy(@ModelAttribute("qo") StrategyQueryObject qo){
+    System.out.println(qo.getKeyword());
     return JsonResult.success(strategyService.listForPage(qo));
   }
 
@@ -148,6 +155,34 @@ public class StrategyController {
   @ResponseBody
   public JsonResult strategyThumbup(@RequestParam("sid") Long strategyId,@UserParam UserInfo userInfo) {
     return strategyStatisticsRedisService.strategyThumbup(strategyId,userInfo.getId());
+  }
+
+
+
+  @ApiOperation(value = "推荐功能")
+  @GetMapping("strategyRecommend")
+  @ResponseBody
+  public JsonResult strategyRecommend(@UserParam UserInfo userInfo, @ModelAttribute("qo") StrategyQueryObject qo) {
+    Tags tags = tagsService.getById(1);
+    qo.setThemeId(tags.getThemeId());
+    List<Strategy> strategyList = strategyService.getRecommend(qo);
+    List<Strategy> result = new ArrayList<>();
+    RecommendReponse recommendReponse = new RecommendReponse();
+    if (strategyList.size() >= 3) {
+      for(int i = 0; i < 3; ++i) {
+        result.add(strategyList.get(i));
+      }
+      recommendReponse.setRecords(result);
+    } else {
+      recommendReponse.setRecords(strategyList);
+    }
+
+    recommendReponse.setCurrent(1);
+    recommendReponse.setSize(1);
+    recommendReponse.setTotal(recommendReponse.getRecords().size());
+    recommendReponse.setPages(1);
+
+    return new JsonResult(200, "成功", recommendReponse);
   }
 
 

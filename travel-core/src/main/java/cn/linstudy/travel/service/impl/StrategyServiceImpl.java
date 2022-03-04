@@ -68,6 +68,18 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
   @Autowired
   RedisTemplate redisTemplate;
 
+  @Override
+  public List<Strategy> getRecommend(StrategyQueryObject qo){
+    QueryWrapper wrapper = new QueryWrapper();
+    if (qo.getKeyword() != null && !(qo.getKeyword().equals(""))) {
+      wrapper.like("title", "%" + qo.getKeyword() + "%");
+    }
+
+    wrapper.eq(qo.getThemeId() != null, "theme_id", qo.getThemeId());
+    List<Strategy> strategyList = super.list(wrapper);
+    return strategyList;
+  }
+
   /**
    * @return com.baomidou.mybatisplus.extension.plugins.pagination.Page<cn.linstudy.travel.domain.Strategy>
    * @Description: 根据条件查询
@@ -96,6 +108,10 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
         // 同时将关联id赋值给dest_id字段
         wrapper.eq(qo.getRefid() != null,"dest_id",qo.getRefid());
       }
+    }
+
+    if (qo.getKeyword() != null && !(qo.getKeyword().equals(""))) {
+      wrapper.like("title", "%" + qo.getKeyword() + "%");
     }
 
     wrapper.orderByDesc(qo.getOrderBy());
