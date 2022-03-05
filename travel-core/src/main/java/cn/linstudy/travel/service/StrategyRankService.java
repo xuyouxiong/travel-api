@@ -5,6 +5,8 @@ import cn.linstudy.travel.domain.StrategyRank;
 import cn.linstudy.travel.qo.response.JsonResult;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 
 /**
  * @Description 攻略排行的业务类接口
@@ -13,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface StrategyRankService extends IService<StrategyRank> {
   JsonResult rank(Long type);
+
+  List<Strategy> getStrategys();
 }

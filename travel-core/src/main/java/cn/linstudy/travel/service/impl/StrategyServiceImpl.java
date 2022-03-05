@@ -191,6 +191,13 @@ public class StrategyServiceImpl extends ServiceImpl<StrategyMapper, Strategy> i
     return super.list((Wrapper<Strategy>) new QueryWrapper().eq("dest_id",id));
   }
 
+  @Override
+  public List<Strategy> queryByThemeId(Long id) {
+    QueryWrapper queryWrapper = new QueryWrapper();
+    queryWrapper.eq("theme_id", id);
+    return super.list(queryWrapper);
+  }
+
   /**
    * @return boolean
    * @Description: 修改或者增加攻略

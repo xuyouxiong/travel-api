@@ -63,4 +63,7 @@ public interface StrategyService extends IService<Strategy> {
   List<Map<String ,Object>> condition(Integer type);
 
   List<Strategy> queryByDestId(Long id);
+
+  List<Strategy> queryByThemeId(Long id);
+
 }

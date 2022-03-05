@@ -11,6 +11,7 @@ import cn.linstudy.travel.qo.StrategyCommentQueryObject;
 import cn.linstudy.travel.qo.StrategyQueryObject;
 import cn.linstudy.travel.qo.response.JsonResult;
 import cn.linstudy.travel.qo.response.RecommendReponse;
+import cn.linstudy.travel.qo.response.TagsCountResponse;
 import cn.linstudy.travel.redis.service.StrategyStatisticsRedisService;
 import cn.linstudy.travel.redis.service.UserInfoRedisService;
 import cn.linstudy.travel.service.*;
@@ -44,6 +45,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("strategies")
 @Api(tags = "前端攻略相关接口")
 public class StrategyController {
+
+  @Autowired
+  StrategyRankService strategyRankService;
 
   @Autowired
   StrategyService strategyService;
@@ -164,6 +168,7 @@ public class StrategyController {
   @ResponseBody
   public JsonResult strategyRecommend(@UserParam UserInfo userInfo, @ModelAttribute("qo") StrategyQueryObject qo) {
     Tags tags = tagsService.getById(1);
+    Long theme_id = tags.getThemeId();
     qo.setThemeId(tags.getThemeId());
     List<Strategy> strategyList = strategyService.getRecommend(qo);
     List<Strategy> result = new ArrayList<>();
@@ -174,14 +179,84 @@ public class StrategyController {
       }
       recommendReponse.setRecords(result);
     } else {
-      recommendReponse.setRecords(strategyList);
+      // 这边要补的
+      // 找到这个用户评论类型最多的其中一个(这个类型不等于后台设置的)
+      //
+      List<TagsCountResponse> tagsCountResponseList = tagsService.selectCountTags(userInfo.getId(),theme_id);
+      List<Strategy> strategyList1 = new ArrayList<>();
+      if(tagsCountResponseList.size() > 0) {
+        strategyList1 = strategyService.queryByThemeId(tagsCountResponseList.get(0).getTagId());
+      }
+
+      List<Strategy> results = strategyRankService.getStrategys();
+      if (strategyList.size() == 0) {
+        if (tagsCountResponseList.size() == 0) {
+          recommendReponse.setRecords(results);
+        } else {
+          for(int j = 0; j < strategyList1.size() && j < 3; ++j) {
+            result.add(strategyList1.get(j));
+          }
+
+          if (strategyList1.size() <= 3) {
+            for(int j = 0; j < 3 - strategyList1.size(); ++j) {
+              result.add(results.get(j));
+            }
+          }
+
+          recommendReponse.setRecords(result);
+        }
+      }
+
+      if (strategyList.size() == 1) {
+        result.add(strategyList.get(0));
+        if (tagsCountResponseList.size() == 0) {
+          for(int j = 0; j < 2; j++) {
+            result.add(results.get(j));
+          }
+          recommendReponse.setRecords(result);
+        } else {
+          for(int j = 0; j < strategyList1.size() && j < 2; ++j) {
+            result.add(strategyList1.get(j));
+          }
+
+          if (strategyList1.size() <= 2) {
+            for(int j = 0; j < 2 - strategyList1.size(); ++j) {
+              result.add(results.get(j));
+            }
+          }
+
+          recommendReponse.setRecords(result);
+        }
+      }
+
+      if (strategyList.size() == 2) {
+        result.add(strategyList.get(0));
+        result.add(strategyList.get(1));
+        if (tagsCountResponseList.size() == 0) {
+          for(int j = 0; j < 1; j++) {
+            result.add(results.get(j));
+          }
+          recommendReponse.setRecords(result);
+        } else {
+          for(int j = 0; j < strategyList1.size() && j < 1; ++j) {
+            result.add(strategyList1.get(j));
+          }
+
+          if (strategyList1.size() <= 1) {
+            for(int j = 0; j < 1 - strategyList1.size(); ++j) {
+              result.add(results.get(j));
+            }
+          }
+
+          recommendReponse.setRecords(result);
+        }
+      }
     }
 
     recommendReponse.setCurrent(1);
     recommendReponse.setSize(1);
     recommendReponse.setTotal(recommendReponse.getRecords().size());
     recommendReponse.setPages(1);
-
     return new JsonResult(200, "成功", recommendReponse);
   }
 
