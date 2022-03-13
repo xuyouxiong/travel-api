@@ -33,16 +33,16 @@ public class VerifyCodeUtils{
      * @return
      */
     public static String generateVerifyCode(int verifySize, String sources){
-        if(sources == null || sources.length() == 0){
-            sources = VERIFY_CODES;
-        }
-        int codesLen = sources.length();
-        Random rand = new Random(System.currentTimeMillis());
-        StringBuilder verifyCode = new StringBuilder(verifySize);
-        for(int i = 0; i < verifySize; i++){
-            verifyCode.append(sources.charAt(rand.nextInt(codesLen-1)));
-        }
-        return verifyCode.toString();
+//        if(sources == null || sources.length() == 0){
+//            sources = VERIFY_CODES;
+//        }
+//        int codesLen = sources.length();
+//        Random rand = new Random(System.currentTimeMillis());
+//        StringBuilder verifyCode = new StringBuilder(verifySize);
+//        for(int i = 0; i < verifySize; i++){
+//            verifyCode.append(sources.charAt(rand.nextInt(codesLen-1)));
+//        }
+        return String.format("%04d",new Random().nextInt(9999));
     }
 
 
