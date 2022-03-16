@@ -10,6 +10,7 @@
 	<script src="js/bootstrap/js/bootstrap.js"></script>
 	<script src="js/plugins/messager/jquery.bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/jquery/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/js.cookie.min.js"></script>
 	<style type="text/css">
 body{
 	background-color:  #FFFFFF;
@@ -33,10 +34,8 @@ body{
 
 
                 if(data.code == 200){
-                    // window.location.href="/admin/list";
-					$.cookie('user', JSON.stringify(data.data.user), {expires: 1 , path: '/'});
-					$.cookie('token', data.data.token, {expires: 1, path: '/'});
-
+					localStorage.setItem('token', data.data.token)
+					localStorage.setItem('user', JSON.stringify(data.data.user))
 					document.referrer //上一个请求路径
 					var url = document.referrer ? document.referrer : "/";
 
@@ -70,13 +69,13 @@ body{
 				<div class="form-group form-group-lg">
 					<div class="input-group">
 						<div class="input-group-addon">用户名</div>
-						<input class="form-control" name="name"  value="admin"/>
+						<input class="form-control" name="name"  value=""/>
 					</div>
 				</div>
 				<div class="form-group form-group-lg">
 					<div class="input-group">
 						<div class="input-group-addon">密&emsp;码</div>
-						<input class="form-control" name="pass" type="password" value="1"/>
+						<input class="form-control" name="pass" type="password" value=""/>
 					</div>
 				</div>
 				<div class="form-group">

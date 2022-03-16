@@ -11,17 +11,25 @@
         <li>
            <p class="navbar-text text-info"></p>
         </li>
-        <li><a href="/login.html">安全退出</a></li>
+        <li><a href="javascript:;" id="logout-admin">安全退出</a></li>
     </ul>
 </div>
 
 <script>
     $(function () {
-        var user = $.cookie('user');
-        var token = $.cookie('token');
-        var userJson = JSON.parse(user)
-        $(".navbar-text").text(userJson.name)
-        console.log(user)
-        console.log(token)
+        var user = localStorage.getItem("user")
+        var token = localStorage.getItem("token")
+        if (token != "null" && token) {
+            var userJson = JSON.parse(user)
+            $(".navbar-text").text(userJson.name)
+        } else {
+            alert("未登录1")
+            location.href = "/login.html"
+        }
+    })
+
+    $("#logout-admin").click(function(res) {
+        localStorage.clear()
+        location.reload()
     })
 </script>

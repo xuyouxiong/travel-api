@@ -26,6 +26,10 @@ public class UserInfoRegisterVO extends BaseDomain {
   @ApiModelProperty(value = "密码")
   private String password;
 
+  @TableField(exist = false)
+  @ApiModelProperty(value = "手机验证码")
+  private String verifyCode;
+
   // 这个字段不会映射到数据库中
   @TableField(exist = false)
   @ApiModelProperty(value = "确认密码")

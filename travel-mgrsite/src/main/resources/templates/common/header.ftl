@@ -11,6 +11,7 @@
 <script type="text/javascript" src="/js/plugins/jquery-validation/message/messages_cn.js"></script>
 <script type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/js.cookie.min.js"></script>
 
 <!--最后引入-->
 <script type="text/javascript" src="/js/system/commonAll.js"></script>

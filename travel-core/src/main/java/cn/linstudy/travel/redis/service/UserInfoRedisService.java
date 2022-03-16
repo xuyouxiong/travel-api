@@ -8,7 +8,10 @@ import cn.linstudy.travel.domain.UserInfo;
  * @Date 2021/4/10 9:13
  */
 public interface UserInfoRedisService {
-
+  /**
+   * 退出这个用户
+   */
+  void deleteLoginToken(String key);
   /**
    * 将验证码设置到redis中
    * @param phone

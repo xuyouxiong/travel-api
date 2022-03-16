@@ -25,6 +25,12 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
 
   @Autowired
   UserInfoService userInfoService;
+
+  @Override
+  public void deleteLoginToken(String key) {
+      template.delete(key);
+  }
+
   @Override
   public void setVerifyCode(String phone, String code) {
     String  key = RedisKeyEnum.ENUM_VERYFY_CODE.join(phone);

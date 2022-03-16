@@ -52,10 +52,9 @@
 <!--设置菜单回显-->
 <script>
     $(function () {
-        var user = $.cookie('user');
-        var token = $.cookie('token');
+        var user = localStorage.getItem("user")
+        var token = localStorage.getItem("token")
         if (!token) {
-            alert("未登录")
             location.href = '/login.html'
         }
         var userJson = JSON.parse(user)
@@ -69,8 +68,6 @@
         $('#ticket_manger').attr("href", "/spot/list?uid=" + userJson.id)
         $('#hotel_manger').attr("href", "/hotel/list?uid=" + userJson.id)
         $('#order_manger').attr("href", "/order/list?uid=" + userJson.id)
-        console.log(user)
-        console.log(token)
     })
     $(".in li.${currentMenu}").addClass("active");
 </script>

@@ -103,6 +103,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper,UserInfo> im
     AssertsUtils.hasText(userInfoRegisterVO.getRepeatPassword(),"再次密码不能为空");
     AssertsUtils.hasText(userInfoRegisterVO.getPhone(),"手机不能为空");
     AssertsUtils.isEquals(userInfoRegisterVO.getPassword(),userInfoRegisterVO.getRepeatPassword(),"两次的密码不一样");
+    AssertsUtils.isEquals(userInfoRegisterVO.getVerifyCode(), userInfoRedisService.getValue(RedisKeyEnum.ENUM_VERYFY_CODE.join(userInfoRegisterVO.getPhone())), "手机验证码错误");
+    System.out.println(userInfoRegisterVO.getVerifyCode());
+    System.out.println(userInfoRedisService.getValue(RedisKeyEnum.ENUM_VERYFY_CODE.join(userInfoRegisterVO.getPhone())));
     try {
       // 注册
     userInfoMapper.insert(userInfoRegisterVO);

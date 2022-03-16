@@ -61,6 +61,7 @@ public class  JwtUtil {
   public static String getAudience(String token) {
     String audience = null;
     try {
+      System.out.println(JWT.decode(token).getAudience());
       audience = JWT.decode(token).getAudience().get(0);
     } catch (JWTDecodeException j) {
 

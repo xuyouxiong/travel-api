@@ -65,6 +65,11 @@ public class UserInfoController {
     return userInfoService.login(userInfoRegisterVO);
   }
 
+  @ApiOperation(value = "用户的退出")
+  public JsonResult logout(@UserParam UserInfo userInfo) {
+    return new JsonResult(200, "成功");
+  }
+
   @ApiOperation(value = "查询是否收藏")
   @GetMapping("strategies/favor")
   public JsonResult favor(Long sid ,Long userId){
