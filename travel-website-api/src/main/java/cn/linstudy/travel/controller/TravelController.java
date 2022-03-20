@@ -141,7 +141,7 @@ public class TravelController {
     travelContent.setId(travel.getId());
     travelContentService.saveOrUpdate(travelContent);
     //这边成功了添加内容到content
-    return new JsonResult(200, "成功");
+    return new JsonResult(200, "成功", travelContent);
   }
 
 }
