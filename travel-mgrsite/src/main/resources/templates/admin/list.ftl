@@ -4,7 +4,8 @@
     <#include "../common/header.ftl">
     <script type="text/javascript">
         $(function () {
-            var token = $.cookie('token')
+            var user = localStorage.getItem('user');
+            var token = localStorage.getItem('token');
             $.ajax({
                 type: 'GET',
                 url: '/travel/getContentById',

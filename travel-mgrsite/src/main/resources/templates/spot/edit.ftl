@@ -41,8 +41,8 @@
 
             //保存
             $("#btn_submit").click(function () {
-                var user = $.cookie('user');
-                var token = $.cookie('token');
+                var user = localStorage.getItem('user');
+                var token = localStorage.getItem('token');
                 if (!token) {
                     alert("未登录")
                     location.href = '/login.html'
